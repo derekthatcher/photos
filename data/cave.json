@@ -5,6 +5,7 @@
     "description": "Kiri on Nosferatu",
     "dateTaken": "2026-05-02 16:06:00",
     "thumbUrl": "https://live.staticflickr.com/65535/55242677807_9ee2351c7f_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55242677807_b3a646b842_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55242677807_39090ce095_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -12,7 +13,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 1600",
+      "focalLength": "200 mm"
     }
   },
   {
@@ -21,6 +24,7 @@
     "description": "Tom on Buffy Express",
     "dateTaken": "2026-05-02 15:39:22",
     "thumbUrl": "https://live.staticflickr.com/65535/55242691487_0167680ecd_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55242691487_2815387455_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55242691487_1b01c67870_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -28,7 +32,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/4.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 1000",
+      "focalLength": "34 mm"
     }
   },
   {
@@ -37,6 +43,7 @@
     "description": "Lans, Nosferatu The Cave",
     "dateTaken": "2026-04-19 15:33:50",
     "thumbUrl": "https://live.staticflickr.com/65535/55216531646_fe3a30057f_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55216531646_84fe56ad7f_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55216531646_10f450d893_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -44,7 +51,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 1000",
+      "focalLength": "176 mm"
     }
   },
   {
@@ -53,6 +62,7 @@
     "description": "Bob on Buffy, The Cave",
     "dateTaken": "2026-03-22 12:37:27",
     "thumbUrl": "https://live.staticflickr.com/65535/55161278348_a5e7b7dd68_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55161278348_150c6130b0_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55161278348_6bf1c6e0db_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -60,7 +70,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/2.8",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 250",
+      "focalLength": "52 mm"
     }
   },
   {
@@ -69,6 +81,7 @@
     "description": "Ando working Kaz's Project.",
     "dateTaken": "2026-03-07 13:35:23",
     "thumbUrl": "https://live.staticflickr.com/65535/55134535531_76596f9c3a_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55134535531_0b30069dc9_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55134535531_ec1d088205_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -76,15 +89,18 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/4.0",
-      "shutter": "0.006 sec (1/160)"
+      "shutter": "0.006 sec (1/160)",
+      "iso": "ISO 1000",
+      "focalLength": "28 mm"
     }
   },
   {
     "id": "55160221252",
     "title": "_DSC3341",
-    "description": "Erin on the next project.",
+    "description": "Erin on Bolt No Chaser",
     "dateTaken": "2026-03-22 15:38:01",
     "thumbUrl": "https://live.staticflickr.com/65535/55160221252_726c3be4de_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55160221252_84b3102d4c_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55160221252_4a016896e0_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -92,15 +108,18 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/3.5",
-      "shutter": "0.005 sec (1/200)"
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 1000",
+      "focalLength": "32 mm"
     }
   },
   {
     "id": "55080946073",
     "title": "_DSC2624",
-    "description": "Erin - secret project - stay off!",
+    "description": "Erin on Pied Piper",
     "dateTaken": "2026-02-06 13:13:18",
     "thumbUrl": "https://live.staticflickr.com/65535/55080946073_4910e5bd15_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55080946073_790a184d54_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55080946073_1cee1ee938_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -108,7 +127,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 800",
+      "focalLength": "73 mm"
     }
   },
   {
@@ -117,6 +138,7 @@
     "description": "Erin, Bolts Start",
     "dateTaken": "2026-01-14 14:19:50",
     "thumbUrl": "https://live.staticflickr.com/65535/55041734516_e3c7c64d8d_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55041734516_f47f73f0e9_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/55041734516_4c109f94e7_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -124,7 +146,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 320",
+      "focalLength": "70 mm"
     }
   },
   {
@@ -133,6 +157,7 @@
     "description": "Phoebe on Bogus Machismo, The Cave",
     "dateTaken": "2025-11-08 14:04:12",
     "thumbUrl": "https://live.staticflickr.com/65535/54909992026_d4efdcca48_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54909992026_c8adc972e4_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54909992026_31cfaa7621_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -140,7 +165,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 1250",
+      "focalLength": "163 mm"
     }
   },
   {
@@ -149,6 +176,7 @@
     "description": "Oliver ticking the Enigma Machine",
     "dateTaken": "2025-10-18 13:06:45",
     "thumbUrl": "https://live.staticflickr.com/65535/54862404900_b242be6549_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54862404900_8f00c198d9_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54862404900_885d4ea066_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -156,7 +184,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/2.8",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 1000",
+      "focalLength": "28 mm"
     }
   },
   {
@@ -165,6 +195,7 @@
     "description": "Erin on Grumble.",
     "dateTaken": "2025-01-21 16:33:44",
     "thumbUrl": "https://live.staticflickr.com/65535/54279900379_82f04f4217_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54279900379_16c3b3f92a_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54279900379_0b22b7ca8d_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -172,7 +203,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 500",
+      "focalLength": "75 mm"
     }
   },
   {
@@ -181,6 +214,7 @@
     "description": "Jake - Centrifuge, The Cave.",
     "dateTaken": "2025-09-24 16:36:24",
     "thumbUrl": "https://live.staticflickr.com/65535/54808904094_a49a8d01b0_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54808904094_6f8fef99bc_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54808904094_bc002aa88d_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -188,7 +222,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/4.5",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 2500",
+      "focalLength": "44 mm"
     }
   },
   {
@@ -197,6 +233,7 @@
     "description": "Jake, Buffy Express",
     "dateTaken": "2025-10-18 13:29:44",
     "thumbUrl": "https://live.staticflickr.com/65535/54861246362_53bd652e49_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54861246362_b044fe7311_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54861246362_9b5363d995_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -204,7 +241,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/4.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 1000",
+      "focalLength": "37 mm"
     }
   },
   {
@@ -213,6 +252,7 @@
     "description": "Nosferatu, The Cave.",
     "dateTaken": "2015-11-15 15:32:49",
     "thumbUrl": "https://live.staticflickr.com/733/22611141758_38c374857b_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/733/22611141758_c7a0a4b311_k.jpg",
     "fullUrl": "https://live.staticflickr.com/733/22611141758_dfe8988453_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -220,7 +260,9 @@
       "camera": "Canon EOS 500D",
       "lens": "EF70-200mm f/4L USM",
       "fStop": "f/4.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 400",
+      "focalLength": "70 mm"
     }
   },
   {
@@ -229,6 +271,7 @@
     "description": "Cave vibes. ",
     "dateTaken": "2019-10-05 11:01:17",
     "thumbUrl": "https://live.staticflickr.com/65535/48848252022_a87d36f5b4_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/48848252022_6168436821_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/48848252022_306bb9f364_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -236,7 +279,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "20mm F1.4 DG HSM | Art 018",
       "fStop": "f/5.6",
-      "shutter": "0.033 sec (1/30)"
+      "shutter": "0.033 sec (1/30)",
+      "iso": "ISO 500",
+      "focalLength": "20 mm"
     }
   },
   {
@@ -245,6 +290,7 @@
     "description": "Bobby K styling the dyno on Kaz's",
     "dateTaken": "2019-11-02 12:20:45",
     "thumbUrl": "https://live.staticflickr.com/65535/48999579696_0283560047_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/48999579696_0b2a4475e6_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/48999579696_0d808b74c1_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -252,15 +298,18 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.5",
-      "shutter": "0.002 sec (1/500)"
+      "shutter": "0.002 sec (1/500)",
+      "iso": "ISO 2000",
+      "focalLength": "126 mm"
     }
   },
   {
     "id": "49633313826",
     "title": "_DSC8221",
-    "description": "Let there be Link Ups",
+    "description": "Alec on Let there be Link Ups",
     "dateTaken": "2020-03-08 14:45:06",
     "thumbUrl": "https://live.staticflickr.com/65535/49633313826_684f759dce_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49633313826_5111e8fbab_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49633313826_45bc0edf68_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -268,7 +317,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 1250",
+      "focalLength": "118 mm"
     }
   },
   {
@@ -277,6 +328,7 @@
     "description": "Christina, Bolts. Back at the Cave.",
     "dateTaken": "2020-05-14 15:38:39",
     "thumbUrl": "https://live.staticflickr.com/65535/49892981143_7f0e7a8194_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49892981143_58af13cccf_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49892981143_491042e7cf_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -284,7 +336,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 1000",
+      "focalLength": "70 mm"
     }
   },
   {
@@ -293,6 +347,7 @@
     "description": "Rare sighting of an Ocun Athlete with their feet on.",
     "dateTaken": "2019-11-23 16:18:38",
     "thumbUrl": "https://live.staticflickr.com/65535/49108055703_bb15a46172_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49108055703_e3d0f5a6da_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49108055703_3db2167fc6_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -300,7 +355,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/400)"
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 640",
+      "focalLength": "122 mm"
     }
   },
   {
@@ -309,6 +366,7 @@
     "description": "Resting before the storm",
     "dateTaken": "2019-11-23 14:55:12",
     "thumbUrl": "https://live.staticflickr.com/65535/49108054923_740bc84d1b_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49108054923_661a906f0b_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49108054923_587637ac8c_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -316,15 +374,18 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/400)"
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 800",
+      "focalLength": "200 mm"
     }
   },
   {
     "id": "49108561261",
     "title": "_DSC4512",
-    "description": "Scott 'Grrrrring'",
+    "description": "Scott 'Grrrrring' on Bolt Mode",
     "dateTaken": "2019-11-23 14:06:46",
     "thumbUrl": "https://live.staticflickr.com/65535/49108561261_3bffe6638f_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49108561261_b6e7d358a5_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49108561261_334c079308_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -332,7 +393,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/400)"
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 640",
+      "focalLength": "176 mm"
     }
   },
   {
@@ -341,6 +404,7 @@
     "description": "Scott walking the heel on Bolt Mode.",
     "dateTaken": "2019-11-23 14:07:09",
     "thumbUrl": "https://live.staticflickr.com/65535/49108050858_24d2cf3494_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49108050858_517d0746d3_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49108050858_7d8cb7c11e_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -348,15 +412,18 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/400)"
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 500",
+      "focalLength": "140 mm"
     }
   },
   {
     "id": "49226945827",
     "title": "_DSC5278",
-    "description": "Tom and his admirer's. ",
+    "description": "Tom on Bolt Mode and his admirer's. ",
     "dateTaken": "2019-12-16 16:55:56",
     "thumbUrl": "https://live.staticflickr.com/65535/49226945827_824f738af6_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49226945827_9c573eff37_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49226945827_8d2320ede8_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -364,7 +431,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 800",
+      "focalLength": "81 mm"
     }
   },
   {
@@ -373,6 +442,7 @@
     "description": "Christina learning the game.",
     "dateTaken": "2019-12-16 16:23:23",
     "thumbUrl": "https://live.staticflickr.com/65535/49226717521_865ed2c6ea_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/49226717521_da4a02ed38_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/49226717521_b5a7c2a13b_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -380,7 +450,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 640",
+      "focalLength": "100 mm"
     }
   },
   {
@@ -389,6 +461,7 @@
     "description": "Bob finding the Raddest option at the Cave.",
     "dateTaken": "2020-10-21 17:24:36",
     "thumbUrl": "https://live.staticflickr.com/65535/50517435282_d48397c3ed_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/50517435282_1627e5f221_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/50517435282_bae752c01f_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -396,7 +469,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 1250",
+      "focalLength": "154 mm"
     }
   },
   {
@@ -405,6 +480,7 @@
     "description": "Explorer. ",
     "dateTaken": "2021-01-24 16:06:18",
     "thumbUrl": "https://live.staticflickr.com/65535/50869170246_2876ee800e_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/50869170246_0bc762f243_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/50869170246_b23c359313_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -412,15 +488,18 @@
       "camera": "Sony ILCE-7M3",
       "lens": "20mm F1.4 DG HSM | Art 018",
       "fStop": "f/1.4",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 125",
+      "focalLength": "20 mm"
     }
   },
   {
     "id": "50869169846",
     "title": "_DSC4432",
-    "description": "Kapow!",
+    "description": "Kapow! Erin on Rubble.",
     "dateTaken": "2021-01-24 13:41:07",
     "thumbUrl": "https://live.staticflickr.com/65535/50869169846_9a1e8618b5_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/50869169846_1451e3951e_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/50869169846_231df3282a_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -428,15 +507,18 @@
       "camera": "Sony ILCE-7M3",
       "lens": "20mm F1.4 DG HSM | Art 018",
       "fStop": "f/8.0",
-      "shutter": "0.004 sec (1/250)"
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 1250",
+      "focalLength": "20 mm"
     }
   },
   {
     "id": "50869265022",
     "title": "_DSC4335",
-    "description": "Foot kicker.",
+    "description": "Foot kicker. Bob on Centrifuge",
     "dateTaken": "2021-01-23 15:27:12",
     "thumbUrl": "https://live.staticflickr.com/65535/50869265022_dcc6528c75_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/50869265022_8f4fdfafe6_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/50869265022_a6de6f0a7f_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -444,7 +526,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "20mm F1.4 DG HSM | Art 018",
       "fStop": "f/1.6",
-      "shutter": "0.005 sec (1/200)"
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 125",
+      "focalLength": "20 mm"
     }
   },
   {
@@ -453,6 +537,7 @@
     "description": "The Honey Badger!\nCoen gets the clipping shot after the crux.",
     "dateTaken": "2023-03-11 14:02:06",
     "thumbUrl": "https://live.staticflickr.com/65535/52739144427_bfe4021ac3_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/52739144427_a26752cb6d_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/52739144427_c72c2c910b_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -460,7 +545,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/2.8",
-      "shutter": "0.005 sec (1/200)"
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 640",
+      "focalLength": "51 mm"
     }
   },
   {
@@ -469,6 +556,7 @@
     "description": "MPW on last jump of Paint It Black 33, The Cave",
     "dateTaken": "2024-11-24 13:16:12",
     "thumbUrl": "https://live.staticflickr.com/65535/54160963180_dc16536e39_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54160963180_feed90409a_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54160963180_56ee9db5df_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -476,7 +564,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 150-500mm F5-6.7 A057",
       "fStop": "f/5.0",
-      "shutter": "0.003 sec (1/400)"
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 2000",
+      "focalLength": "150 mm"
     }
   },
   {
@@ -485,6 +575,7 @@
     "description": "Gemma on Bolts.",
     "dateTaken": "2024-12-07 16:03:05",
     "thumbUrl": "https://live.staticflickr.com/65535/54187318242_30263a9ca1_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54187318242_12a76d3dda_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54187318242_bf8561e0ac_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -492,7 +583,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/320)"
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 1000",
+      "focalLength": "200 mm"
     }
   },
   {
@@ -501,6 +594,7 @@
     "description": "Bob and his adoring fans",
     "dateTaken": "2024-12-07 14:36:15",
     "thumbUrl": "https://live.staticflickr.com/65535/54188487504_3ce9553ae1_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54188487504_caf29bd76e_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54188487504_63c9efd07e_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -508,7 +602,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/3.2",
-      "shutter": "0.003 sec (1/400)"
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 1250",
+      "focalLength": "41 mm"
     }
   },
   {
@@ -517,6 +613,7 @@
     "description": "Paige on Bogus.",
     "dateTaken": "2024-12-07 13:25:40",
     "thumbUrl": "https://live.staticflickr.com/65535/54188247137_fae0d072d0_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54188247137_3a1cb9e104_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54188247137_bcba16cadb_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -524,7 +621,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.003 sec (1/400)"
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 1600",
+      "focalLength": "200 mm"
     }
   },
   {
@@ -533,6 +632,7 @@
     "description": "Gunn on The Fat Controller, the Cave.",
     "dateTaken": "2025-01-17 16:13:10",
     "thumbUrl": "https://live.staticflickr.com/65535/54270853942_17491e4395_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54270853942_dfd6bbd325_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54270853942_401b7f1e11_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -540,7 +640,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/2.8",
-      "shutter": "0.006 sec (1/160)"
+      "shutter": "0.006 sec (1/160)",
+      "iso": "ISO 400",
+      "focalLength": "32 mm"
     }
   },
   {
@@ -549,6 +651,7 @@
     "description": "Centrifuge extension project.",
     "dateTaken": "2025-01-17 15:37:13",
     "thumbUrl": "https://live.staticflickr.com/65535/54271744666_24f8a7b940_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54271744666_41ab99508b_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54271744666_87e6931ec2_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -556,7 +659,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/4.0",
-      "shutter": "0.005 sec (1/200)"
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 640",
+      "focalLength": "28 mm"
     }
   },
   {
@@ -565,6 +670,7 @@
     "description": "Centrifuge extension project.",
     "dateTaken": "2025-01-17 15:35:58",
     "thumbUrl": "https://live.staticflickr.com/65535/54272052783_47353a363c_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54272052783_75669edf8d_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54272052783_a36b316200_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -572,7 +678,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/4.0",
-      "shutter": "0.005 sec (1/200)"
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 640",
+      "focalLength": "28 mm"
     }
   },
   {
@@ -581,6 +689,7 @@
     "description": "Space Scrolling selfie.",
     "dateTaken": "2025-01-19 15:38:59",
     "thumbUrl": "https://live.staticflickr.com/65535/54274606468_2ce90f0526_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54274606468_543019d1ff_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54274606468_4f60c8226a_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -588,7 +697,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "70-200mm F4 G SSM",
       "fStop": "f/4.0",
-      "shutter": "0.005 sec (1/200)"
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 1000",
+      "focalLength": "122 mm"
     }
   },
   {
@@ -597,6 +708,7 @@
     "description": "Centrifuge Extension project, another version of same shot.",
     "dateTaken": "2025-01-17 15:37:13",
     "thumbUrl": "https://live.staticflickr.com/65535/54279902083_097089f2e6_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54279902083_b31ef29f2e_k.jpg",
     "fullUrl": "https://live.staticflickr.com/65535/54279902083_5c27a393db_4k.jpg",
     "width": "auto",
     "height": "auto",
@@ -604,7 +716,9 @@
       "camera": "Sony ILCE-7M3",
       "lens": "E 28-75mm F2.8-2.8",
       "fStop": "f/4.0",
-      "shutter": "0.005 sec (1/200)"
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 640",
+      "focalLength": "28 mm"
     }
   }
 ]

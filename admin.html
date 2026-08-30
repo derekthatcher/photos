@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Site Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap+Sharp:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -13,7 +17,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: "Asap Sharp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: #121214;
             color: #e0e0e0;
             padding: 32px;
@@ -438,8 +442,14 @@
                         status.innerText = `[${label}] EXIF metadata ${i + 1}/${photos.length}...`;
 
                         const exifUrl = `${baseUrl}?method=flickr.photos.getExif&api_key=${apiKey}&photo_id=${p.id}&secret=${p.secret}&format=json&nojsoncallback=1`;
-                        let exifData = { camera: 'N/A', lens: 'N/A', fStop: 'N/A', shutter: 'N/A' };
-
+                        let exifData = {
+                            camera: 'N/A',
+                            lens: 'N/A',
+                            fStop: 'N/A',
+                            shutter: 'N/A',
+                            iso: 'N/A',
+                            focalLength: 'N/A'
+                        };
                         try {
                             const exifRes = await fetch(exifUrl);
                             const exifJson = await exifRes.json();
@@ -452,6 +462,8 @@
                                     if (item.tag === 'Lens' || item.tag === 'LensModel') exifData.lens = val;
                                     if (item.tag === 'FNumber' || item.tag === 'Aperture') exifData.fStop = val;
                                     if (item.tag === 'ExposureTime' || item.tag === 'ShutterSpeedValue') exifData.shutter = val;
+                                    if (item.tag === 'ISO' || item.tag === 'ISOSpeedRatings') exifData.iso = `ISO ${val}`;
+                                    if (item.tag === 'FocalLength') exifData.focalLength = val;
                                 });
                             }
                         } catch (e) { }

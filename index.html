@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Photos</title>
     <meta name="description" content="Photos">
     <meta name="author" content="Derek Thatcher @ castlehillbasin.co.nz">
     <meta property="og:image" content="chb.png" />
@@ -12,6 +12,10 @@
     <meta name="MobileOptimized" content="width" />
     <meta name="HandheldFriendly" content="true" />
     <link rel="icon" type="image/x-icon" href="/photos/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap+Sharp:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-color: #0d0d0e;
@@ -28,7 +32,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: "Asap Sharp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -50,6 +54,7 @@
             top: 0;
             z-index: 100;
             backdrop-filter: blur(12px);
+            text-transform: uppercase;
         }
 
         .site-title {
@@ -200,6 +205,17 @@
             color: color-mix(in srgb, var(--text-color) 75%, transparent);
             margin-bottom: 12px;
             line-height: 1.4;
+        }
+
+        .meta-desc a {
+            color: var(--text-color);
+            text-decoration: underline;
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
+
+        .meta-desc a:hover {
+            opacity: 1;
         }
 
         .meta-footer {
@@ -507,10 +523,22 @@
 
             // Fill overlay text
             document.getElementById('meta-title').innerText = photo.title || '';
-            document.getElementById('meta-desc').innerText = photo.description || '';
+            document.getElementById('meta-desc').innerHTML = photo.description || '';
+            const descLinks = document.querySelectorAll('#meta-desc a');
+            descLinks.forEach(link => {
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+            });
 
             const exif = photo.exif || {};
-            const exifParts = [exif.camera, exif.lens, exif.fStop, exif.shutter].filter(val => val && val !== 'N/A');
+            const exifParts = [
+                exif.camera,
+                exif.lens,
+                exif.focalLength,
+                exif.fStop,
+                exif.shutter,
+                exif.iso
+            ].filter(val => val && val !== 'N/A');
             document.getElementById('meta-exif').innerText = exifParts.join('  |  ');
 
             // Set link to full high-res photo URL
@@ -520,7 +548,11 @@
 
         function cycleLightboxState(e) {
             // Ignore clicks on close button or high-res link
-            if (e.target.closest('.lightbox-close') || e.target.closest('#meta-zoom')) return;
+            if (
+                e.target.closest('.lightbox-close') ||
+                e.target.closest('#meta-zoom') ||
+                e.target.closest('#meta-desc a')
+            ) return;
 
             if (lightboxState === 1) {
                 // State 1 (Fit) -> State 2 (Caption Overlay)
