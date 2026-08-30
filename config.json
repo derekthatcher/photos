@@ -1,8 +1,9 @@
 {
-  "siteTitle": "Photos",
+  "siteTitle": "Derek Thatcher",
+  "favicon": "favicon.ico",
   "bgColor": "#0f0f0f",
   "textColor": "#ededed",
-  "about": "Some of my photos from flickr.",
+  "about": "Photographs of people climbing rocks (mostly).",
   "socialLinks": [
     {
       "label": "Instagram",

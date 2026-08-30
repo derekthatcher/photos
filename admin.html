@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Site Admin</title>
+    <meta name="description" content="Photo Portfolio">
+    <meta name="author" content="Derek Thatcher @ castlehillbasin.co.nz">
+    <meta property="og:image" content="chb.png" />
+    <meta property="og:image:secure_url" content="chb.png" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <link id="site-favicon" rel="icon" type="image/x-icon" href="/photos/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap+Sharp:ital,wght@0,100..900;1,100..900&display=swap"
@@ -176,6 +183,11 @@
                 <input type="color" id="textColor" value="#f0f0f0" style="height: 40px; cursor: pointer;">
             </div>
         </div>
+        <!--favicon-->
+        <div class="field-group">
+            <label for="favicon">Favicon Path / URL:</label>
+            <input type="text" id="favicon" placeholder="favicon.ico or assets/favicon.png">
+        </div>
         <!-- About Paragraph -->
         <label for="siteAbout">About Text</label>
         <textarea id="siteAbout" rows="3" placeholder="Brief statement or bio..."
@@ -226,6 +238,7 @@
         // Update populateConfigUI to load colors, about, and social links
         function populateConfigUI(config) {
             if (config.siteTitle) document.getElementById('siteTitle').value = config.siteTitle;
+            if (config.favicon) document.getElementById('favicon').value = config.favicon;
             if (config.bgColor) document.getElementById('bgColor').value = config.bgColor;
             if (config.textColor) document.getElementById('textColor').value = config.textColor;
             if (config.about) document.getElementById('siteAbout').value = config.about;
@@ -368,6 +381,7 @@
 
         async function saveConfigJson() {
             const siteTitle = document.getElementById('siteTitle').value.trim();
+            const favicon = document.getElementById('favicon').value.trim() || 'favicon.ico';
             const bgColor = document.getElementById('bgColor').value;
             const textColor = document.getElementById('textColor').value;
             const about = document.getElementById('siteAbout').value.trim();
@@ -393,7 +407,7 @@
                 if (label && dataFile) navigation.push({ label, albumId, dataFile });
             });
 
-            const configData = { siteTitle, bgColor, textColor, about, socialLinks, navigation };
+            const configData = { siteTitle, favicon, bgColor, textColor, about, socialLinks, navigation };
 
             try {
                 await writeFile('config.json', JSON.stringify(configData, null, 2));
