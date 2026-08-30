@@ -15,18 +15,27 @@
     {
       "label": "Castle Hill Basin",
       "url": "https://castlehillbasin.co.nz/"
+    },
+    {
+      "label": "Youtube",
+      "url": "https://www.youtube.com/@thatcherderek"
     }
   ],
   "navigation": [
     {
-      "label": "The Basin",
+      "label": "Basin",
       "albumId": "72177720335360086",
       "dataFile": "data/basin.json"
     },
     {
-      "label": "The Cave",
+      "label": "Cave",
       "albumId": "72177720335359831",
       "dataFile": "data/cave.json"
+    },
+    {
+      "label": "Milford",
+      "albumId": "72177720335388824",
+      "dataFile": "data/milford.json"
     },
     {
       "label": "Moon",
