@@ -1,0 +1,37 @@
+{
+  "siteTitle": "Photos",
+  "bgColor": "#0f0f0f",
+  "textColor": "#ededed",
+  "about": "Nothing to see",
+  "socialLinks": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/thedispatcher/"
+    },
+    {
+      "label": "Flickr",
+      "url": "https://www.flickr.com/photos/derekthatcher"
+    },
+    {
+      "label": "Castle Hill Basin",
+      "url": "https://castlehillbasin.co.nz/"
+    }
+  ],
+  "navigation": [
+    {
+      "label": "The Basin",
+      "albumId": "72177720335360086",
+      "dataFile": "data/basin.json"
+    },
+    {
+      "label": "The Cave",
+      "albumId": "72177720335359831",
+      "dataFile": "data/cave.json"
+    },
+    {
+      "label": "Moon",
+      "albumId": "72177720331263195",
+      "dataFile": "data/moon.json"
+    }
+  ]
+}

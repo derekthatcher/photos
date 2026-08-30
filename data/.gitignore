@@ -1,0 +1,21 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor & IDE Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local Logs & Temps
+*.log
+*.tmp
+
+# Optional: Admin Page
+# Uncomment the line below if you prefer to keep admin.html local-only and out of your public repository
+# admin.html

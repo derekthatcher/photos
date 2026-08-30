@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Site Admin</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #121214;
+            color: #e0e0e0;
+            padding: 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2 {
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .card {
+            background: #1e1e22;
+            border: 1px solid #2e2e34;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            background: #121214;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #fff;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        button {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        button.secondary {
+            background: #374151;
+        }
+
+        button.secondary:hover {
+            background: #4b5563;
+        }
+
+        button.danger {
+            background: #dc2626;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        button.danger:hover {
+            background: #b91c1c;
+        }
+
+        .album-row {
+            display: grid;
+            grid-template-columns: auto 2fr 2fr 2fr auto;
+            /* Added extra column for drag handle */
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 12px;
+            background: #161618;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #28282d;
+            transition: opacity 0.2s ease, border-color 0.2s ease;
+        }
+
+        /* Visual state when an item is being dragged */
+        .album-row.dragging {
+            opacity: 0.4;
+            border: 1px dashed #2563eb;
+        }
+
+        .drag-handle {
+            cursor: grab;
+            color: #666;
+            font-size: 1.2rem;
+            user-select: none;
+            padding: 0 4px;
+        }
+
+        .drag-handle:hover {
+            color: #aaa;
+        }
+
+        .album-row input {
+            margin-bottom: 0;
+        }
+
+        .status-bar {
+            font-size: 0.85rem;
+            color: #60a5fa;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Portfolio Site Admin</h1>
+
+    <!-- 1. Folder Connection -->
+    <div class="card">
+        <h2>1. Project Folder Connection</h2>
+        <p style="font-size: 0.85rem; color: #888; margin-bottom: 16px;">
+            Select your website project root folder to enable direct reading/writing to <code>config.json</code> and the
+            <code>/data</code> directory.
+        </p>
+        <button onclick="connectFolder()">Connect Project Directory</button>
+        <div id="folder-status" class="status-bar">Status: Not connected</div>
+    </div>
+
+    <!-- 2. Flickr API Key -->
+    <div class="card">
+        <h2>2. API Settings</h2>
+        <label for="apiKey">Flickr API Key</label>
+        <input type="text" id="apiKey" placeholder="Enter Flickr API Key" onchange="saveApiKey()">
+    </div>
+
+    <!-- 3. Config JSON Editor -->
+    <div class="card">
+        <h2>3. Site Configuration (config.json)</h2>
+
+        <label for="siteTitle">Site Title / Name</label>
+        <input type="text" id="siteTitle" placeholder="My Photography Portfolio">
+
+        <!-- Theme Colors -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+                <label for="bgColor">Background Color</label>
+                <input type="color" id="bgColor" value="#0d0d0e" style="height: 40px; cursor: pointer;">
+            </div>
+            <div>
+                <label for="textColor">Text Color</label>
+                <input type="color" id="textColor" value="#f0f0f0" style="height: 40px; cursor: pointer;">
+            </div>
+        </div>
+        <!-- About Paragraph -->
+        <label for="siteAbout">About Text</label>
+        <textarea id="siteAbout" rows="3" placeholder="Brief statement or bio..."
+            style="width: 100%; padding: 10px; background: #121214; border: 1px solid #333; border-radius: 4px; color: #fff; margin-bottom: 16px; font-family: inherit;"></textarea>
+
+        <!-- Social Links -->
+        <label>Social Links</label>
+        <div id="social-list"></div>
+        <button type="button" class="secondary" onclick="addSocialRow()" style="margin-bottom: 24px;">+ Add Social
+            Link</button>
+
+        <label>Navigation & Albums</label>
+        <div id="album-list"></div>
+
+        <div style="display: flex; gap: 12px; margin-top: 12px;">
+            <button type="button" class="secondary" onclick="addAlbumRow()">+ Add Album</button>
+            <button type="button" onclick="saveConfigJson()">Save config.json</button>
+        </div>
+        <div id="config-status" class="status-bar"></div>
+    </div>
+
+    <!-- 4. Sync Data Files -->
+    <div class="card">
+        <h2>4. Fetch & Overwrite Data Files</h2>
+        <p style="font-size: 0.85rem; color: #888; margin-bottom: 16px;">
+            Pulls photos and EXIF details from Flickr for all configured albums and directly overwrites target JSON
+            files in <code>/data/</code>.
+        </p>
+        <button onclick="syncAllAlbums()">Fetch & Overwrite All Album JSONs</button>
+        <div id="sync-status" class="status-bar"></div>
+    </div>
+
+    <script>
+        let dirHandle = null;
+
+        // Load API Key from localStorage on page load
+        document.getElementById('apiKey').value = localStorage.getItem('flickr_api_key') || '';
+
+        function saveApiKey() {
+            localStorage.setItem('flickr_api_key', document.getElementById('apiKey').value.trim());
+        }
+
+        // ---------------------------------------------------------
+        // CONFIG LOADERS
+        // ---------------------------------------------------------
+
+        // Populate the UI fields from a config object
+        // Update populateConfigUI to load colors, about, and social links
+        function populateConfigUI(config) {
+            if (config.siteTitle) document.getElementById('siteTitle').value = config.siteTitle;
+            if (config.bgColor) document.getElementById('bgColor').value = config.bgColor;
+            if (config.textColor) document.getElementById('textColor').value = config.textColor;
+            if (config.about) document.getElementById('siteAbout').value = config.about;
+
+            // Populate Social Links
+            const socialContainer = document.getElementById('social-list');
+            socialContainer.innerHTML = '';
+            if (config.socialLinks && Array.isArray(config.socialLinks)) {
+                config.socialLinks.forEach(item => addSocialRow(item.label, item.url));
+            }
+
+            // Populate Albums
+            const albumContainer = document.getElementById('album-list');
+            albumContainer.innerHTML = '';
+            if (config.navigation && Array.isArray(config.navigation)) {
+                config.navigation.forEach(nav => {
+                    addAlbumRow(nav.label || '', nav.albumId || '', nav.dataFile || '');
+                });
+            }
+        }
+
+        // 1. Try fetching config.json over HTTP/HTTPS on initial load
+        async function loadConfigFromFetch() {
+            try {
+                const res = await fetch('config.json?cachebust=' + Date.now());
+                if (res.ok) {
+                    const config = await res.json();
+                    populateConfigUI(config);
+                    document.getElementById('config-status').innerText = 'Loaded existing config.json (via fetch)';
+                }
+            } catch (e) {
+                // Silent fallback if running on file:// or file doesn't exist yet
+            }
+        }
+
+        // 2. Read config.json from File System Access API after selecting folder
+        async function loadExistingConfig() {
+            if (!dirHandle) return;
+            try {
+                const fileHandle = await dirHandle.getFileHandle('config.json');
+                const file = await fileHandle.getFile();
+                const text = await file.text();
+                const config = JSON.parse(text);
+
+                populateConfigUI(config);
+                document.getElementById('config-status').innerText = 'Loaded existing config.json (from directory)';
+            } catch (e) {
+                document.getElementById('config-status').innerText = 'No config.json found in directory (will create on save)';
+                if (document.getElementById('album-list').children.length === 0) {
+                    addAlbumRow('Landscapes', '', 'data/landscapes.json');
+                }
+            }
+        }
+
+        // Connect to local directory
+        async function connectFolder() {
+            try {
+                dirHandle = await window.showDirectoryPicker();
+                document.getElementById('folder-status').innerText = `Status: Connected to "${dirHandle.name}"`;
+
+                // Ensure /data directory exists
+                await dirHandle.getDirectoryHandle('data', { create: true });
+
+                // Load config directly from folder
+                await loadExistingConfig();
+            } catch (err) {
+                document.getElementById('folder-status').innerText = `Error connecting: ${err.message}`;
+            }
+        }
+
+        // ---------------------------------------------------------
+        // UI ROW BUILDER & DRAG/DROP
+        // ---------------------------------------------------------
+        function addAlbumRow(label = '', albumId = '', dataFile = '') {
+            const container = document.getElementById('album-list');
+            const row = document.createElement('div');
+            row.className = 'album-row';
+            row.setAttribute('draggable', 'true');
+
+            row.innerHTML = `
+    <span class="drag-handle" title="Drag to reorder">☰</span>
+    <input type="text" class="album-label" placeholder="Menu Label (e.g. Street)" value="${label}">
+    <input type="text" class="album-id" placeholder="Flickr Album ID" value="${albumId}">
+    <input type="text" class="album-file" placeholder="data/street.json" value="${dataFile}">
+    <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
+  `;
+
+            row.addEventListener('dragstart', () => row.classList.add('dragging'));
+            row.addEventListener('dragend', () => row.classList.remove('dragging'));
+
+            container.appendChild(row);
+        }
+
+        document.getElementById('album-list').addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const container = document.getElementById('album-list');
+            const draggingItem = container.querySelector('.dragging');
+            if (!draggingItem) return;
+
+            const siblings = [...container.querySelectorAll('.album-row:not(.dragging)')];
+            const nextSibling = siblings.find(sibling => {
+                return e.clientY <= sibling.getBoundingClientRect().top + sibling.offsetHeight / 2;
+            });
+
+            container.insertBefore(draggingItem, nextSibling);
+        });
+
+        // Helper to add Social Link inputs dynamically
+        function addSocialRow(label = '', url = '') {
+            const container = document.getElementById('social-list');
+            const row = document.createElement('div');
+            row.className = 'album-row';
+            row.style.gridTemplateColumns = '2fr 4fr auto';
+            row.innerHTML = `
+    <input type="text" class="social-label" placeholder="Platform (e.g. Instagram)" value="${label}">
+    <input type="text" class="social-url" placeholder="URL (e.g. https://...)" value="${url}">
+    <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
+  `;
+            container.appendChild(row);
+        }
+
+        // ---------------------------------------------------------
+        // FILE WRITING & SYNC LOGIC
+        // ---------------------------------------------------------
+        async function writeFile(relativePath, content) {
+            if (!dirHandle) throw new Error("Please connect project folder first.");
+            const parts = relativePath.split('/');
+            let currentDir = dirHandle;
+
+            for (let i = 0; i < parts.length - 1; i++) {
+                currentDir = await currentDir.getDirectoryHandle(parts[i], { create: true });
+            }
+
+            const fileName = parts[parts.length - 1];
+            const fileHandle = await currentDir.getFileHandle(fileName, { create: true });
+            const writable = await fileHandle.createWritable();
+            await writable.write(content);
+            await writable.close();
+        }
+
+        async function saveConfigJson() {
+            const siteTitle = document.getElementById('siteTitle').value.trim();
+            const bgColor = document.getElementById('bgColor').value;
+            const textColor = document.getElementById('textColor').value;
+            const about = document.getElementById('siteAbout').value.trim();
+
+            // Collect Social Links
+            const socialRows = document.querySelectorAll('#social-list .album-row');
+            const socialLinks = [];
+            socialRows.forEach(row => {
+                const label = row.querySelector('.social-label').value.trim();
+                const url = row.querySelector('.social-url').value.trim();
+                if (label && url) socialLinks.push({ label, url });
+            });
+
+            // Collect Albums
+            const albumRows = document.querySelectorAll('#album-list .album-row');
+            const navigation = [];
+            albumRows.forEach(row => {
+                const label = row.querySelector('.album-label').value.trim();
+                const albumId = row.querySelector('.album-id').value.trim();
+                let dataFile = row.querySelector('.album-file').value.trim();
+
+                if (dataFile && !dataFile.startsWith('data/')) dataFile = `data/${dataFile}`;
+                if (label && dataFile) navigation.push({ label, albumId, dataFile });
+            });
+
+            const configData = { siteTitle, bgColor, textColor, about, socialLinks, navigation };
+
+            try {
+                await writeFile('config.json', JSON.stringify(configData, null, 2));
+                document.getElementById('config-status').innerText = 'Successfully saved config.json!';
+            } catch (err) {
+                document.getElementById('config-status').innerText = `Save failed: ${err.message}`;
+            }
+        }
+
+        async function syncAllAlbums() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const status = document.getElementById('sync-status');
+
+            if (!apiKey) return alert('Please enter a Flickr API Key.');
+            if (!dirHandle) return alert('Please connect your project directory first.');
+
+            const rows = document.querySelectorAll('.album-row');
+            const baseUrl = 'https://api.flickr.com/services/rest/';
+
+            for (const row of rows) {
+                const albumId = row.querySelector('.album-id').value.trim();
+                let dataFile = row.querySelector('.album-file').value.trim();
+                const label = row.querySelector('.album-label').value.trim();
+
+                if (!albumId || !dataFile) continue;
+                if (!dataFile.startsWith('data/')) dataFile = `data/${dataFile}`;
+
+                status.innerText = `Processing "${label}" (${albumId})...`;
+
+                const photosUrl = `${baseUrl}?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&extras=description,o_dims,url_o,url_l,date_taken&format=json&nojsoncallback=1`;
+
+                try {
+                    const res = await fetch(photosUrl);
+                    const data = await res.json();
+
+                    if (data.stat !== 'ok') {
+                        status.innerText = `Error on "${label}": ${data.message}`;
+                        continue;
+                    }
+
+                    const photos = data.photoset.photo;
+                    const result = [];
+
+                    for (let i = 0; i < photos.length; i++) {
+                        const p = photos[i];
+                        status.innerText = `[${label}] EXIF metadata ${i + 1}/${photos.length}...`;
+
+                        const exifUrl = `${baseUrl}?method=flickr.photos.getExif&api_key=${apiKey}&photo_id=${p.id}&secret=${p.secret}&format=json&nojsoncallback=1`;
+                        let exifData = { camera: 'N/A', lens: 'N/A', fStop: 'N/A', shutter: 'N/A' };
+
+                        try {
+                            const exifRes = await fetch(exifUrl);
+                            const exifJson = await exifRes.json();
+                            if (exifJson.stat === 'ok') {
+                                const items = exifJson.photo.exif || [];
+                                exifData.camera = exifJson.photo.camera || 'N/A';
+
+                                items.forEach(item => {
+                                    const val = (item.clean && item.clean._content) || (item.raw && item.raw._content);
+                                    if (item.tag === 'Lens' || item.tag === 'LensModel') exifData.lens = val;
+                                    if (item.tag === 'FNumber' || item.tag === 'Aperture') exifData.fStop = val;
+                                    if (item.tag === 'ExposureTime' || item.tag === 'ShutterSpeedValue') exifData.shutter = val;
+                                });
+                            }
+                        } catch (e) { }
+
+                        result.push({
+                            id: p.id,
+                            title: p.title || 'Untitled',
+                            description: (p.description && p.description._content) || '',
+                            dateTaken: p.datetaken || '',
+                            thumbUrl: p.url_l || p.url_o,
+                            fullUrl: p.url_o || p.url_l,
+                            width: p.o_width || p.width_o || 'auto',
+                            height: p.o_height || p.height_o || 'auto',
+                            exif: exifData
+                        });
+                    }
+
+                    await writeFile(dataFile, JSON.stringify(result, null, 2));
+                } catch (err) {
+                    status.innerText = `Failed syncing ${label}: ${err.message}`;
+                    return;
+                }
+            }
+
+            status.innerText = 'Sync complete! All album JSON files written to /data folder.';
+        }
+
+        // Automatically attempt to fetch config on load
+        loadConfigFromFetch();
+    </script>
+</body>
+
+</html>
