@@ -190,7 +190,7 @@
         }
 
         .meta-title {
-            font-size: 1.15rem;
+            font-size: 0.6rem;
             font-weight: 600;
             margin-bottom: 6px;
         }
@@ -502,7 +502,7 @@
             lightboxEl.className = 'active';
             console.log(photo)
             // Load high-resolution photo
-            lightboxImg.src = photo.fullUrl || photo.thumbUrl;
+            lightboxImg.src = photo.displayUrl || photo.fullUrl || photo.thumbUrl;
             lightboxImg.alt = photo.title || '';
 
             // Fill overlay text
