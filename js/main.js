@@ -1,6 +1,6 @@
 let siteConfig = null;
         let currentAlbumData = [];
-        let lightboxState = 0; // 0: Closed, 1: Fit, 2: Caption, 3: 100% Zoom
+        let lightboxState = 0; // 0: Closed, 1: Fit, 2: Caption
         let currentSortOrder = 'desc';
         let currentPhotoIndex = 0;
 

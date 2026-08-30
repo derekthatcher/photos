@@ -88,7 +88,6 @@
 
             .header-controls {
                 display: none;
-                /* Hide nav links by default on mobile */
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -105,7 +104,6 @@
 
             .header-controls.open {
                 display: flex;
-                /* Display dropdown when active */
             }
 
             nav {
@@ -303,7 +301,6 @@
             background: none;
             border: none;
             color: color-mix(in srgb, var(--text-color) 55%, transparent);
-            /* Fixed var */
             font-size: 1.05rem;
             line-height: 1;
             cursor: pointer;
@@ -314,18 +311,15 @@
 
         .sort-btn:hover {
             color: color-mix(in srgb, var(--text-color) 65%, transparent);
-            /* Fixed var */
         }
 
         .sort-btn.active {
             color: color-mix(in srgb, var(--text-color) 85%, transparent);
-            /* Fixed var */
             font-weight: bold;
         }
 
         .sort-divider {
             color: color-mix(in srgb, var(--text-color) 55%, transparent);
-            /* Fixed var */
             font-size: 0.8rem;
             user-select: none;
         }
