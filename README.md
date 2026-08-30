@@ -17,16 +17,6 @@ A minimal, ultra-lightweight photography portfolio built with pure HTML5, CSS, a
 
 ---
 
-## Directory Structure
-
-```text
-├── index.html          # Main portfolio site
-├── admin.html          # Client-side admin & Flickr JSON sync tool
-├── config.json         # Site title, theme colors, about text, navigation
-└── data/
-    ├── landscapes.json # Pre-fetched photo & EXIF metadata
-    └── portraits.json  # Pre-fetched photo & EXIF metadata
-
 ## Getting Started
 
 ### 1. Site Setup
@@ -66,3 +56,15 @@ Site colors apply dynamically via CSS variables:
 ## License
 
 MIT License. Free to use, modify, and distribute for personal or commercial photography portfolios.
+
+---
+
+## Directory Structure
+
+```text
+├── index.html          # Main portfolio site
+├── admin.html          # Client-side admin & Flickr JSON sync tool
+├── config.json         # Site title, theme colors, about text, navigation
+└── data/
+    ├── landscapes.json # Pre-fetched photo & EXIF metadata
+    └── portraits.json  # Pre-fetched photo & EXIF metadata
