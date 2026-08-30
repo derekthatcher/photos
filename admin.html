@@ -406,7 +406,7 @@
             if (!apiKey) return alert('Please enter a Flickr API Key.');
             if (!dirHandle) return alert('Please connect your project directory first.');
 
-            const rows = document.querySelectorAll('.album-row');
+            const rows = document.querySelectorAll('#album-list .album-row');
             const baseUrl = 'https://api.flickr.com/services/rest/';
 
             for (const row of rows) {
@@ -419,7 +419,7 @@
 
                 status.innerText = `Processing "${label}" (${albumId})...`;
 
-                const photosUrl = `${baseUrl}?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&extras=description,o_dims,url_o,url_l,date_taken&format=json&nojsoncallback=1`;
+                const photosUrl = `${baseUrl}?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&extras=description,o_dims,url_o,url_4k,url_3k,url_k,url_h,url_l,date_taken&format=json&nojsoncallback=1`;
 
                 try {
                     const res = await fetch(photosUrl);
@@ -462,7 +462,7 @@
                             description: (p.description && p.description._content) || '',
                             dateTaken: p.datetaken || '',
                             thumbUrl: p.url_l || p.url_o,
-                            fullUrl: p.url_o || p.url_l,
+                            fullUrl: p.url_o || p.url_4k || p.url_3k || p.url_k || p.url_h || p.url_l,
                             width: p.o_width || p.width_o || 'auto',
                             height: p.o_height || p.height_o || 'auto',
                             exif: exifData

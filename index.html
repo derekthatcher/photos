@@ -29,6 +29,7 @@
 
         main {
             flex: 1;
+            padding: 16px 32px 64px;
         }
 
         /* Header & Navigation */
@@ -70,10 +71,6 @@
         }
 
         /* Masonry Gallery Grid */
-        main {
-            padding: 16px 32px 64px;
-        }
-
         .gallery-grid {
             column-count: 3;
             column-gap: 20px;
@@ -116,46 +113,72 @@
         /* 3-State Lightbox Container */
         #lightbox {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-color);
-            display: none;
-            justify-content: center;
-            align-items: center;
+            inset: 0;
+            background-color: color-mix(in srgb, var(--bg-color, #0d0d0e) 95%, black);
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
             cursor: pointer;
+        }
+
+        #lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            transition: max-width 0.2s ease, max-height 0.2s ease, opacity 0.2s ease;
             user-select: none;
         }
 
-        #lightbox-img {
-            max-width: 95vw;
-            max-height: 95vh;
-            object-fit: contain;
+        .lightbox-close {
+            position: fixed;
+            top: 24px;
+            right: 28px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1010;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
         }
 
-        /* Metadata Overlay Panel (State 2) */
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        /* Metadata Overlay Panel Base */
         #lightbox-overlay {
-            position: absolute;
+            position: fixed;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: color-mix(in srgb, var(--bg-color) 85%, transparent);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 24px 32px;
+            background-color: color-mix(in srgb, var(--bg-color, #0d0d0e) 85%, transparent);
+            backdrop-filter: blur(16px);
+            border: 1px solid color-mix(in srgb, var(--text-color, #f0f0f0) 12%, transparent);
+            padding: 20px 28px;
             border-radius: 12px;
             max-width: 600px;
             width: 90%;
-            color: var(--text-color);
+            text-align: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
-            text-align: center;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            z-index: 1005;
         }
 
-        #lightbox-overlay.visible {
+        /* State 2: Caption Overlay Visible */
+        #lightbox.state-caption #lightbox-overlay {
             opacity: 1;
             pointer-events: auto;
         }
@@ -173,13 +196,34 @@
             line-height: 1.4;
         }
 
+        .meta-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+            padding-top: 12px;
+            margin-top: 8px;
+            gap: 16px;
+        }
+
         .meta-exif {
             font-size: 0.8rem;
             color: color-mix(in srgb, var(--text-color) 55%, transparent);
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            border-top: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
-            padding-top: 12px;
+        }
+
+        .meta-zoom {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .meta-zoom:hover {
+            opacity: 1;
         }
 
         .status-msg {
@@ -188,7 +232,6 @@
             color: #666;
         }
 
-        /* Subtle Sort Controls */
         /* Arrow Sort Controls */
         .header-controls {
             display: flex;
@@ -206,7 +249,8 @@
         .sort-btn {
             background: none;
             border: none;
-            color: color-mix(in srgb, var(--bg-text) 55%, transparent);
+            color: color-mix(in srgb, var(--text-color) 55%, transparent);
+            /* Fixed var */
             font-size: 1.05rem;
             line-height: 1;
             cursor: pointer;
@@ -216,16 +260,19 @@
         }
 
         .sort-btn:hover {
-            color: color-mix(in srgb, var(--bg-text) 65%, transparent);;
+            color: color-mix(in srgb, var(--text-color) 65%, transparent);
+            /* Fixed var */
         }
 
         .sort-btn.active {
-            color: color-mix(in srgb, var(--bg-text) 85%, transparent);;
+            color: color-mix(in srgb, var(--text-color) 85%, transparent);
+            /* Fixed var */
             font-weight: bold;
         }
 
         .sort-divider {
-            color: color-mix(in srgb, var(--bg-text) 55%, transparent);;
+            color: color-mix(in srgb, var(--text-color) 55%, transparent);
+            /* Fixed var */
             font-size: 0.8rem;
             user-select: none;
         }
@@ -289,12 +336,17 @@
     </main>
 
     <!-- 3-State Lightbox Element -->
-    <div id="lightbox" onclick="handleLightboxClick()">
+    <div id="lightbox" onclick="cycleLightboxState(event)">
+        <button class="lightbox-close" title="Close (ESC)" onclick="closeLightbox(event)">✕</button>
         <img id="lightbox-img" src="" alt="" />
         <div id="lightbox-overlay">
-            <div class="meta-title" id="meta-title"></div>
-            <div class="meta-desc" id="meta-desc"></div>
-            <div class="meta-exif" id="meta-exif"></div>
+            <div id="meta-title" class="meta-title"></div>
+            <div id="meta-desc" class="meta-desc"></div>
+            <div class="meta-footer">
+                <div id="meta-exif" class="meta-exif"></div>
+                <a id="meta-zoom" class="meta-zoom" href="#" target="_blank" rel="noopener noreferrer"
+                    title="Open Original High-Res Image" onclick="event.stopPropagation()">🔍 Full Res</a>
+            </div>
         </div>
     </div>
 
@@ -306,7 +358,7 @@
     <script>
         let siteConfig = null;
         let currentAlbumData = [];
-        let lightboxState = 0; // 0: Hidden, 1: Fullscreen Photo, 2: Metadata Overlay
+        let lightboxState = 0; // 0: Closed, 1: Fit, 2: Caption, 3: 100% Zoom
         let currentSortOrder = 'desc';
 
         const galleryEl = document.getElementById('gallery');
@@ -343,7 +395,6 @@
                         if (link.label && link.url) {
                             const a = document.createElement('a');
                             a.innerText = link.label;
-                            console.log('social:', link.label);
                             a.href = link.url;
                             a.target = '_blank';
                             a.rel = 'noopener noreferrer';
@@ -441,48 +492,51 @@
 
         // 5. Lightbox Interactions (3-State Logic)
         function openLightbox(photo) {
-            lightboxImg.src = photo.fullUrl;
+            lightboxState = 1;
+            lightboxEl.className = 'active';
+            console.log(photo)
+            // Load high-resolution photo
+            lightboxImg.src = photo.fullUrl || photo.thumbUrl;
+            lightboxImg.alt = photo.title || '';
 
+            // Fill overlay text
             document.getElementById('meta-title').innerText = photo.title || '';
             document.getElementById('meta-desc').innerText = photo.description || '';
 
             const exif = photo.exif || {};
-            const exifParts = [exif.camera, exif.lens, exif.fStop, exif.shutter].filter(
-                val => val && val !== 'N/A'
-            );
-            document.getElementById('meta-exif').innerText = exifParts.join(' • ');
+            const exifParts = [exif.camera, exif.lens, exif.fStop, exif.shutter].filter(val => val && val !== 'N/A');
+            document.getElementById('meta-exif').innerText = exifParts.join('  |  ');
 
-            lightboxState = 1; // Transition to State 1 (Fullscreen Photo)
-            updateLightboxUI();
+            // Set link to full high-res photo URL
+            const zoomLink = document.getElementById('meta-zoom');
+            zoomLink.href = photo.fullUrl || photo.thumbUrl;
         }
 
-        function handleLightboxClick() {
+        function cycleLightboxState(e) {
+            // Ignore clicks on close button or high-res link
+            if (e.target.closest('.lightbox-close') || e.target.closest('#meta-zoom')) return;
+
             if (lightboxState === 1) {
-                lightboxState = 2; // Transition to State 2 (Metadata Overlay)
+                // State 1 (Fit) -> State 2 (Caption Overlay)
+                lightboxState = 2;
+                lightboxEl.className = 'active state-caption';
             } else if (lightboxState === 2) {
-                lightboxState = 0; // Transition to State 0 (Close)
+                // State 2 (Caption Overlay) -> Close back to grid
+                closeLightbox();
             }
-            updateLightboxUI();
         }
 
-        function updateLightboxUI() {
-            if (lightboxState === 0) {
-                lightboxEl.style.display = 'none';
-                overlayEl.classList.remove('visible');
-            } else if (lightboxState === 1) {
-                lightboxEl.style.display = 'flex';
-                overlayEl.classList.remove('visible');
-            } else if (lightboxState === 2) {
-                lightboxEl.style.display = 'flex';
-                overlayEl.classList.add('visible');
-            }
+        function closeLightbox(e) {
+            if (e) e.stopPropagation();
+            lightboxState = 0;
+            lightboxEl.className = '';
+            lightboxImg.src = '';
         }
 
         // Close on ESC key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightboxState !== 0) {
-                lightboxState = 0;
-                updateLightboxUI();
+            if (e.key === 'Escape' && lightboxState > 0) {
+                closeLightbox();
             }
         });
 

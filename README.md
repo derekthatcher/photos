@@ -1,6 +1,6 @@
 # Flickr-Powered Photography Portfolio
 
-A minimal, ultra-lightweight photography portfolio built with pure HTML5, CSS, and JavaScript. It uses Flickr as a headless CMS, pre-fetching album metadata and EXIF data into local JSON files via a browser-based admin tool. (Flickr API key required)
+A minimal, ultra-lightweight photography portfolio built with pure HTML5, CSS, and JavaScript. It uses Flickr as a headless CMS, pre-fetching album metadata and EXIF data into local JSON files via a browser-based admin tool. (Flickr API key required, would be easy to hold images in directory and create json files instead.)
 
 ## Features
 
