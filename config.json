@@ -42,12 +42,6 @@
       "layout": "grid"
     },
     {
-      "label": "Moon",
-      "albumId": "72177720331263195",
-      "dataFile": "data/moon.json",
-      "layout": "grid"
-    },
-    {
       "label": "Ropes",
       "albumId": "72177720335402159",
       "dataFile": "data/ropes.json",
@@ -58,6 +52,12 @@
       "albumId": "72177720335379926",
       "dataFile": "data/land.json",
       "layout": "panorama"
+    },
+    {
+      "label": "Moon",
+      "albumId": "72177720331263195",
+      "dataFile": "data/moon.json",
+      "layout": "grid"
     }
   ]
 }

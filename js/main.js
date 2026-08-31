@@ -107,11 +107,11 @@ async function loadAlbum(dataFile, navIndex) {
     const currentAlbum = siteConfig.navigation[navIndex];
     const layoutStyle = currentAlbum && currentAlbum.layout ? currentAlbum.layout : 'grid';
     gallery.className = `gallery-grid gallery-${layoutStyle}`;
-    
+
     try {
         const res = await fetch(dataFile);
         currentAlbumData = await res.json();
-        sortAndRender();
+        sortAndRender(layoutStyle);
     } catch (err) {
         console.error(`Failed to load ${dataFile}:`, err);
         galleryEl.innerHTML = `<div class="status-msg">Unable to load album file: ${dataFile}</div>`;
@@ -129,7 +129,7 @@ function setSortOrder(order) {
 }
 
 // Sort array by Date Taken before calling renderGallery()
-function sortAndRender() {
+function sortAndRender(layoutStyle) {
     if (!currentAlbumData || currentAlbumData.length === 0) return;
 
     currentAlbumData.sort((a, b) => {
@@ -139,18 +139,22 @@ function sortAndRender() {
         return currentSortOrder === 'desc' ? dateB - dateA : dateA - dateB;
     });
 
-    renderGallery();
+    renderGallery(layoutStyle);
 }
 
 // 4. Masonry Grid Rendering
-function renderGallery() {
+function renderGallery(layout = 'grid') {
     galleryEl.innerHTML = '';
     currentAlbumData.forEach((photo, index) => {
+        const imgSrc = (layout === 'panorama') 
+            ? (photo.fullUrl || photo.displayUrl) 
+            : (photo.displayUrl || photo.thumbUrl);
+
         const item = document.createElement('div');
         item.className = 'gallery-item';
 
         const img = document.createElement('img');
-        img.src = photo.thumbUrl;
+        img.src = imgSrc;
         img.alt = photo.title || 'Photo';
         img.loading = 'lazy';
         img.onerror = () => item.remove();

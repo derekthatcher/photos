@@ -74,5 +74,62 @@
       "iso": "ISO 160",
       "focalLength": "500 mm"
     }
+  },
+  {
+    "id": "54629120271",
+    "title": "_DSC9620-Pano",
+    "description": "Torlesse Range. Flock Hill to the Gap. \n\n<a href=\"https://derekthatcher.github.io/basiner/?img=flock-hill-6\" rel=\"noreferrer nofollow\">derekthatcher.github.io/basiner/?img=flock-hill-6</a>",
+    "dateTaken": "2025-07-02 11:53:59",
+    "thumbUrl": "https://live.staticflickr.com/65535/54629120271_bf32130241_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54629120271_49291285dc_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/54629120271_6d883d3b79_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Sony ILCE-7M3",
+      "lens": "E 150-500mm F5-6.7 A057",
+      "fStop": "f/8.0",
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 125",
+      "focalLength": "150 mm"
+    }
+  },
+  {
+    "id": "55332959544",
+    "title": "_DSC4737-Pano",
+    "description": "Kura Tawhiti - Quantum Field and Spittle Hill.\n<a href=\"https://derekthatcher.github.io/basiner/?img=kura-tawhiti-6\" rel=\"noreferrer nofollow\">derekthatcher.github.io/basiner/?img=kura-tawhiti-6</a>",
+    "dateTaken": "2026-06-13 11:20:19",
+    "thumbUrl": "https://live.staticflickr.com/65535/55332959544_579c75e3bf_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55332959544_7c99b0a9d5_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/55332959544_3066d8ced8_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Sony ILCE-7M3",
+      "lens": "70-200mm F4 G SSM",
+      "fStop": "f/4.5",
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 100",
+      "focalLength": "135 mm"
+    }
+  },
+  {
+    "id": "55382807358",
+    "title": "_DSC4863-Pano",
+    "description": "",
+    "dateTaken": "2026-07-09 17:01:04",
+    "thumbUrl": "https://live.staticflickr.com/65535/55382807358_5b4fe507e3_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55382807358_192faa1bb0_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/55382807358_8af295007e_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Sony ILCE-7M3",
+      "lens": "E 150-500mm F5-6.7 A057",
+      "fStop": "f/6.7",
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 640",
+      "focalLength": "500 mm"
+    }
   }
 ]
