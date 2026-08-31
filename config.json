@@ -42,6 +42,11 @@
       "label": "Moon",
       "albumId": "72177720331263195",
       "dataFile": "data/moon.json"
+    },
+    {
+      "label": "Ropes",
+      "albumId": "72177720335402159",
+      "dataFile": "data/ropes.json"
     }
   ]
 }

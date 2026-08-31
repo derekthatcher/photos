@@ -101,8 +101,7 @@
 
         .album-row {
             display: grid;
-            grid-template-columns: auto 2fr 2fr 2fr auto;
-            /* Added extra column for drag handle */
+            grid-template-columns: auto 3fr 3fr auto auto;
             gap: 10px;
             align-items: center;
             margin-bottom: 12px;
@@ -113,7 +112,6 @@
             transition: opacity 0.2s ease, border-color 0.2s ease;
         }
 
-        /* Visual state when an item is being dragged */
         .album-row.dragging {
             opacity: 0.4;
             border: 1px dashed #2563eb;
@@ -172,7 +170,6 @@
         <label for="siteTitle">Site Title / Name</label>
         <input type="text" id="siteTitle" placeholder="My Photography Portfolio">
 
-        <!-- Theme Colors -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
             <div>
                 <label for="bgColor">Background Color</label>
@@ -183,21 +180,19 @@
                 <input type="color" id="textColor" value="#f0f0f0" style="height: 40px; cursor: pointer;">
             </div>
         </div>
-        <!--favicon-->
+
         <div class="field-group">
             <label for="favicon">Favicon Path / URL:</label>
             <input type="text" id="favicon" placeholder="favicon.ico or assets/favicon.png">
         </div>
-        <!-- About Paragraph -->
-        <label for="siteAbout">About Text</label>
+
+        <label for="siteAbout" style="margin-top: 16px;">About Text</label>
         <textarea id="siteAbout" rows="3" placeholder="Brief statement or bio..."
             style="width: 100%; padding: 10px; background: #121214; border: 1px solid #333; border-radius: 4px; color: #fff; margin-bottom: 16px; font-family: inherit;"></textarea>
 
-        <!-- Social Links -->
         <label>Social Links</label>
         <div id="social-list"></div>
-        <button type="button" class="secondary" onclick="addSocialRow()" style="margin-bottom: 24px;">+ Add Social
-            Link</button>
+        <button type="button" class="secondary" onclick="addSocialRow()" style="margin-bottom: 24px;">+ Add Social Link</button>
 
         <label>Navigation & Albums</label>
         <div id="album-list"></div>
@@ -213,7 +208,7 @@
     <div class="card">
         <h2>4. Fetch & Overwrite Data Files</h2>
         <p style="font-size: 0.85rem; color: #888; margin-bottom: 16px;">
-            Pulls photos and EXIF details from Flickr for all configured albums and directly overwrites target JSON
+            Pulls photos and EXIF details from Flickr for configured albums and directly overwrites target JSON
             files in <code>/data/</code>.
         </p>
         <button onclick="syncAllAlbums()">Fetch & Overwrite All Album JSONs</button>
@@ -223,19 +218,21 @@
     <script>
         let dirHandle = null;
 
-        // Load API Key from localStorage on page load
         document.getElementById('apiKey').value = localStorage.getItem('flickr_api_key') || '';
 
         function saveApiKey() {
             localStorage.setItem('flickr_api_key', document.getElementById('apiKey').value.trim());
         }
 
+        // Helper to turn album label into a clean lowercase filename
+        function getAutoFileName(label) {
+            const cleanSlug = label.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
+            return `data/${cleanSlug}.json`;
+        }
+
         // ---------------------------------------------------------
         // CONFIG LOADERS
         // ---------------------------------------------------------
-
-        // Populate the UI fields from a config object
-        // Update populateConfigUI to load colors, about, and social links
         function populateConfigUI(config) {
             if (config.siteTitle) document.getElementById('siteTitle').value = config.siteTitle;
             if (config.favicon) document.getElementById('favicon').value = config.favicon;
@@ -243,24 +240,21 @@
             if (config.textColor) document.getElementById('textColor').value = config.textColor;
             if (config.about) document.getElementById('siteAbout').value = config.about;
 
-            // Populate Social Links
             const socialContainer = document.getElementById('social-list');
             socialContainer.innerHTML = '';
             if (config.socialLinks && Array.isArray(config.socialLinks)) {
                 config.socialLinks.forEach(item => addSocialRow(item.label, item.url));
             }
 
-            // Populate Albums
             const albumContainer = document.getElementById('album-list');
             albumContainer.innerHTML = '';
             if (config.navigation && Array.isArray(config.navigation)) {
                 config.navigation.forEach(nav => {
-                    addAlbumRow(nav.label || '', nav.albumId || '', nav.dataFile || '');
+                    addAlbumRow(nav.label || '', nav.albumId || '');
                 });
             }
         }
 
-        // 1. Try fetching config.json over HTTP/HTTPS on initial load
         async function loadConfigFromFetch() {
             try {
                 const res = await fetch('config.json?cachebust=' + Date.now());
@@ -269,12 +263,9 @@
                     populateConfigUI(config);
                     document.getElementById('config-status').innerText = 'Loaded existing config.json (via fetch)';
                 }
-            } catch (e) {
-                // Silent fallback if running on file:// or file doesn't exist yet
-            }
+            } catch (e) { }
         }
 
-        // 2. Read config.json from File System Access API after selecting folder
         async function loadExistingConfig() {
             if (!dirHandle) return;
             try {
@@ -288,21 +279,16 @@
             } catch (e) {
                 document.getElementById('config-status').innerText = 'No config.json found in directory (will create on save)';
                 if (document.getElementById('album-list').children.length === 0) {
-                    addAlbumRow('Landscapes', '', 'data/landscapes.json');
+                    addAlbumRow('Landscapes', '');
                 }
             }
         }
 
-        // Connect to local directory
         async function connectFolder() {
             try {
                 dirHandle = await window.showDirectoryPicker();
                 document.getElementById('folder-status').innerText = `Status: Connected to "${dirHandle.name}"`;
-
-                // Ensure /data directory exists
                 await dirHandle.getDirectoryHandle('data', { create: true });
-
-                // Load config directly from folder
                 await loadExistingConfig();
             } catch (err) {
                 document.getElementById('folder-status').innerText = `Error connecting: ${err.message}`;
@@ -312,19 +298,19 @@
         // ---------------------------------------------------------
         // UI ROW BUILDER & DRAG/DROP
         // ---------------------------------------------------------
-        function addAlbumRow(label = '', albumId = '', dataFile = '') {
+        function addAlbumRow(label = '', albumId = '') {
             const container = document.getElementById('album-list');
             const row = document.createElement('div');
             row.className = 'album-row';
             row.setAttribute('draggable', 'true');
 
             row.innerHTML = `
-    <span class="drag-handle" title="Drag to reorder">☰</span>
-    <input type="text" class="album-label" placeholder="Menu Label (e.g. Street)" value="${label}">
-    <input type="text" class="album-id" placeholder="Flickr Album ID" value="${albumId}">
-    <input type="text" class="album-file" placeholder="data/street.json" value="${dataFile}">
-    <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
-  `;
+                <span class="drag-handle" title="Drag to reorder">☰</span>
+                <input type="text" class="album-label" placeholder="Menu Label (e.g. Cave)" value="${label}">
+                <input type="text" class="album-id" placeholder="Flickr Album ID" value="${albumId}">
+                <button type="button" class="secondary" style="font-size:0.8rem; padding: 6px 12px;" onclick="syncSingleRow(this.parentElement)">Sync</button>
+                <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
+            `;
 
             row.addEventListener('dragstart', () => row.classList.add('dragging'));
             row.addEventListener('dragend', () => row.classList.remove('dragging'));
@@ -346,17 +332,16 @@
             container.insertBefore(draggingItem, nextSibling);
         });
 
-        // Helper to add Social Link inputs dynamically
         function addSocialRow(label = '', url = '') {
             const container = document.getElementById('social-list');
             const row = document.createElement('div');
             row.className = 'album-row';
             row.style.gridTemplateColumns = '2fr 4fr auto';
             row.innerHTML = `
-    <input type="text" class="social-label" placeholder="Platform (e.g. Instagram)" value="${label}">
-    <input type="text" class="social-url" placeholder="URL (e.g. https://...)" value="${url}">
-    <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
-  `;
+                <input type="text" class="social-label" placeholder="Platform (e.g. Instagram)" value="${label}">
+                <input type="text" class="social-url" placeholder="URL (e.g. https://...)" value="${url}">
+                <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
+            `;
             container.appendChild(row);
         }
 
@@ -386,7 +371,6 @@
             const textColor = document.getElementById('textColor').value;
             const about = document.getElementById('siteAbout').value.trim();
 
-            // Collect Social Links
             const socialRows = document.querySelectorAll('#social-list .album-row');
             const socialLinks = [];
             socialRows.forEach(row => {
@@ -395,16 +379,16 @@
                 if (label && url) socialLinks.push({ label, url });
             });
 
-            // Collect Albums
             const albumRows = document.querySelectorAll('#album-list .album-row');
             const navigation = [];
             albumRows.forEach(row => {
                 const label = row.querySelector('.album-label').value.trim();
                 const albumId = row.querySelector('.album-id').value.trim();
-                let dataFile = row.querySelector('.album-file').value.trim();
-
-                if (dataFile && !dataFile.startsWith('data/')) dataFile = `data/${dataFile}`;
-                if (label && dataFile) navigation.push({ label, albumId, dataFile });
+                
+                if (label && albumId) {
+                    const dataFile = getAutoFileName(label);
+                    navigation.push({ label, albumId, dataFile });
+                }
             });
 
             const configData = { siteTitle, favicon, bgColor, textColor, about, socialLinks, navigation };
@@ -417,6 +401,96 @@
             }
         }
 
+        // Core single album fetch and save engine
+        async function fetchAndSaveAlbum(label, albumId, apiKey, statusEl) {
+            const baseUrl = 'https://api.flickr.com/services/rest/';
+            const dataFile = getAutoFileName(label);
+
+            statusEl.innerText = `Processing "${label}" (${albumId})...`;
+
+            const photosUrl = `${baseUrl}?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&extras=description,o_dims,url_o,url_4k,url_3k,url_k,url_h,url_l,date_taken&format=json&nojsoncallback=1`;
+
+            const res = await fetch(photosUrl);
+            const data = await res.json();
+
+            if (data.stat !== 'ok') {
+                throw new Error(data.message || 'Flickr API error');
+            }
+
+            const photos = data.photoset.photo;
+            const result = [];
+
+            for (let i = 0; i < photos.length; i++) {
+                const p = photos[i];
+                statusEl.innerText = `[${label}] EXIF metadata ${i + 1}/${photos.length}...`;
+
+                const exifUrl = `${baseUrl}?method=flickr.photos.getExif&api_key=${apiKey}&photo_id=${p.id}&secret=${p.secret}&format=json&nojsoncallback=1`;
+                let exifData = {
+                    camera: 'N/A',
+                    lens: 'N/A',
+                    fStop: 'N/A',
+                    shutter: 'N/A',
+                    iso: 'N/A',
+                    focalLength: 'N/A'
+                };
+                try {
+                    const exifRes = await fetch(exifUrl);
+                    const exifJson = await exifRes.json();
+                    if (exifJson.stat === 'ok') {
+                        const items = exifJson.photo.exif || [];
+                        exifData.camera = exifJson.photo.camera || 'N/A';
+
+                        items.forEach(item => {
+                            const val = (item.clean && item.clean._content) || (item.raw && item.raw._content);
+                            if (item.tag === 'Lens' || item.tag === 'LensModel') exifData.lens = val;
+                            if (item.tag === 'FNumber' || item.tag === 'Aperture') exifData.fStop = val;
+                            if (item.tag === 'ExposureTime' || item.tag === 'ShutterSpeedValue') exifData.shutter = val;
+                            if (item.tag === 'ISO' || item.tag === 'ISOSpeedRatings') exifData.iso = `ISO ${val}`;
+                            if (item.tag === 'FocalLength') exifData.focalLength = val;
+                        });
+                    }
+                } catch (e) { }
+
+                result.push({
+                    id: p.id,
+                    title: p.title || 'Untitled',
+                    description: (p.description && p.description._content) || '',
+                    dateTaken: p.datetaken || '',
+                    thumbUrl: p.url_l || p.url_o,
+                    displayUrl: p.url_k || p.url_h || p.url_l || p.url_o,
+                    fullUrl: p.url_o || p.url_4k || p.url_3k || p.url_k || p.url_h || p.url_l,
+                    width: p.o_width || p.width_o || 'auto',
+                    height: p.o_height || p.height_o || 'auto',
+                    exif: exifData
+                });
+            }
+
+            await writeFile(dataFile, JSON.stringify(result, null, 2));
+            return dataFile;
+        }
+
+        // Triggered by single row "Sync" button
+        async function syncSingleRow(row) {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            const status = document.getElementById('sync-status');
+
+            if (!apiKey) return alert('Please enter a Flickr API Key.');
+            if (!dirHandle) return alert('Please connect your project directory first.');
+
+            const label = row.querySelector('.album-label').value.trim();
+            const albumId = row.querySelector('.album-id').value.trim();
+
+            if (!label || !albumId) return alert('Please enter both a Menu Label and Album ID.');
+
+            try {
+                const targetFile = await fetchAndSaveAlbum(label, albumId, apiKey, status);
+                status.innerText = `Sync complete! Successfully updated ${targetFile}`;
+            } catch (err) {
+                status.innerText = `Failed syncing "${label}": ${err.message}`;
+            }
+        }
+
+        // Triggered by "Fetch & Overwrite All Album JSONs" button
         async function syncAllAlbums() {
             const apiKey = document.getElementById('apiKey').value.trim();
             const status = document.getElementById('sync-status');
@@ -425,78 +499,15 @@
             if (!dirHandle) return alert('Please connect your project directory first.');
 
             const rows = document.querySelectorAll('#album-list .album-row');
-            const baseUrl = 'https://api.flickr.com/services/rest/';
 
             for (const row of rows) {
-                const albumId = row.querySelector('.album-id').value.trim();
-                let dataFile = row.querySelector('.album-file').value.trim();
                 const label = row.querySelector('.album-label').value.trim();
+                const albumId = row.querySelector('.album-id').value.trim();
 
-                if (!albumId || !dataFile) continue;
-                if (!dataFile.startsWith('data/')) dataFile = `data/${dataFile}`;
-
-                status.innerText = `Processing "${label}" (${albumId})...`;
-
-                const photosUrl = `${baseUrl}?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&extras=description,o_dims,url_o,url_4k,url_3k,url_k,url_h,url_l,date_taken&format=json&nojsoncallback=1`;
+                if (!label || !albumId) continue;
 
                 try {
-                    const res = await fetch(photosUrl);
-                    const data = await res.json();
-
-                    if (data.stat !== 'ok') {
-                        status.innerText = `Error on "${label}": ${data.message}`;
-                        continue;
-                    }
-
-                    const photos = data.photoset.photo;
-                    const result = [];
-
-                    for (let i = 0; i < photos.length; i++) {
-                        const p = photos[i];
-                        status.innerText = `[${label}] EXIF metadata ${i + 1}/${photos.length}...`;
-
-                        const exifUrl = `${baseUrl}?method=flickr.photos.getExif&api_key=${apiKey}&photo_id=${p.id}&secret=${p.secret}&format=json&nojsoncallback=1`;
-                        let exifData = {
-                            camera: 'N/A',
-                            lens: 'N/A',
-                            fStop: 'N/A',
-                            shutter: 'N/A',
-                            iso: 'N/A',
-                            focalLength: 'N/A'
-                        };
-                        try {
-                            const exifRes = await fetch(exifUrl);
-                            const exifJson = await exifRes.json();
-                            if (exifJson.stat === 'ok') {
-                                const items = exifJson.photo.exif || [];
-                                exifData.camera = exifJson.photo.camera || 'N/A';
-
-                                items.forEach(item => {
-                                    const val = (item.clean && item.clean._content) || (item.raw && item.raw._content);
-                                    if (item.tag === 'Lens' || item.tag === 'LensModel') exifData.lens = val;
-                                    if (item.tag === 'FNumber' || item.tag === 'Aperture') exifData.fStop = val;
-                                    if (item.tag === 'ExposureTime' || item.tag === 'ShutterSpeedValue') exifData.shutter = val;
-                                    if (item.tag === 'ISO' || item.tag === 'ISOSpeedRatings') exifData.iso = `ISO ${val}`;
-                                    if (item.tag === 'FocalLength') exifData.focalLength = val;
-                                });
-                            }
-                        } catch (e) { }
-
-                        result.push({
-                            id: p.id,
-                            title: p.title || 'Untitled',
-                            description: (p.description && p.description._content) || '',
-                            dateTaken: p.datetaken || '',
-                            thumbUrl: p.url_l || p.url_o,
-                            displayUrl: p.url_k || p.url_h || p.url_l || p.url_o,
-                            fullUrl: p.url_o || p.url_4k || p.url_3k || p.url_k || p.url_h || p.url_l,
-                            width: p.o_width || p.width_o || 'auto',
-                            height: p.o_height || p.height_o || 'auto',
-                            exif: exifData
-                        });
-                    }
-
-                    await writeFile(dataFile, JSON.stringify(result, null, 2));
+                    await fetchAndSaveAlbum(label, albumId, apiKey, status);
                 } catch (err) {
                     status.innerText = `Failed syncing ${label}: ${err.message}`;
                     return;
@@ -506,7 +517,6 @@
             status.innerText = 'Sync complete! All album JSON files written to /data folder.';
         }
 
-        // Automatically attempt to fetch config on load
         loadConfigFromFetch();
     </script>
 </body>
