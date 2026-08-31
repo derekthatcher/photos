@@ -99,11 +99,15 @@ function renderNavigation() {
 
 // 3. Album Fetching
 async function loadAlbum(dataFile, navIndex) {
+    const gallery = document.getElementById('gallery');
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach((link, idx) => link.classList.toggle('active', idx === navIndex));
 
     galleryEl.innerHTML = '<div class="status-msg">Loading photos...</div>';
-
+    const currentAlbum = siteConfig.navigation[navIndex];
+    const layoutStyle = currentAlbum && currentAlbum.layout ? currentAlbum.layout : 'grid';
+    gallery.className = `gallery-grid gallery-${layoutStyle}`;
+    
     try {
         const res = await fetch(dataFile);
         currentAlbumData = await res.json();

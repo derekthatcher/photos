@@ -101,7 +101,8 @@
 
         .album-row {
             display: grid;
-            grid-template-columns: auto 3fr 3fr auto auto;
+            grid-template-columns: auto 2.5fr 2.5fr 2fr auto auto;
+            /* Adjusted for layout select */
             gap: 10px;
             align-items: center;
             margin-bottom: 12px;
@@ -109,7 +110,16 @@
             padding: 12px;
             border-radius: 6px;
             border: 1px solid #28282d;
-            transition: opacity 0.2s ease, border-color 0.2s ease;
+        }
+
+        .album-row select {
+            width: 100%;
+            padding: 10px;
+            background: #121214;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.85rem;
         }
 
         .album-row.dragging {
@@ -192,7 +202,8 @@
 
         <label>Social Links</label>
         <div id="social-list"></div>
-        <button type="button" class="secondary" onclick="addSocialRow()" style="margin-bottom: 24px;">+ Add Social Link</button>
+        <button type="button" class="secondary" onclick="addSocialRow()" style="margin-bottom: 24px;">+ Add Social
+            Link</button>
 
         <label>Navigation & Albums</label>
         <div id="album-list"></div>
@@ -250,7 +261,7 @@
             albumContainer.innerHTML = '';
             if (config.navigation && Array.isArray(config.navigation)) {
                 config.navigation.forEach(nav => {
-                    addAlbumRow(nav.label || '', nav.albumId || '');
+                    addAlbumRow(nav.label || '', nav.albumId || '', nav.layout || 'grid');
                 });
             }
         }
@@ -298,19 +309,23 @@
         // ---------------------------------------------------------
         // UI ROW BUILDER & DRAG/DROP
         // ---------------------------------------------------------
-        function addAlbumRow(label = '', albumId = '') {
+        function addAlbumRow(label = '', albumId = '', layout = 'grid') {
             const container = document.getElementById('album-list');
             const row = document.createElement('div');
             row.className = 'album-row';
             row.setAttribute('draggable', 'true');
 
             row.innerHTML = `
-                <span class="drag-handle" title="Drag to reorder">☰</span>
-                <input type="text" class="album-label" placeholder="Menu Label (e.g. Cave)" value="${label}">
-                <input type="text" class="album-id" placeholder="Flickr Album ID" value="${albumId}">
-                <button type="button" class="secondary" style="font-size:0.8rem; padding: 6px 12px;" onclick="syncSingleRow(this.parentElement)">Sync</button>
-                <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
-            `;
+        <span class="drag-handle" title="Drag to reorder">☰</span>
+        <input type="text" class="album-label" placeholder="Menu Label (e.g. Cave)" value="${label}">
+        <input type="text" class="album-id" placeholder="Flickr Album ID" value="${albumId}">
+        <select class="album-layout">
+            <option value="grid" ${layout === 'grid' ? 'selected' : ''}>Standard Grid</option>
+            <option value="panorama" ${layout === 'panorama' ? 'selected' : ''}>Panorama (Full Width)</option>
+        </select>
+        <button type="button" class="secondary" style="font-size:0.8rem; padding: 6px 12px;" onclick="syncSingleRow(this.parentElement)">Sync</button>
+        <button type="button" class="danger" onclick="this.parentElement.remove()">Delete</button>
+    `;
 
             row.addEventListener('dragstart', () => row.classList.add('dragging'));
             row.addEventListener('dragend', () => row.classList.remove('dragging'));
@@ -384,10 +399,11 @@
             albumRows.forEach(row => {
                 const label = row.querySelector('.album-label').value.trim();
                 const albumId = row.querySelector('.album-id').value.trim();
-                
+                const layout = row.querySelector('.album-layout').value;
+
                 if (label && albumId) {
                     const dataFile = getAutoFileName(label);
-                    navigation.push({ label, albumId, dataFile });
+                    navigation.push({ label, albumId, dataFile, layout });
                 }
             });
 

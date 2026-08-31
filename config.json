@@ -26,27 +26,38 @@
     {
       "label": "Basin",
       "albumId": "72177720335360086",
-      "dataFile": "data/basin.json"
+      "dataFile": "data/basin.json",
+      "layout": "grid"
     },
     {
       "label": "Cave",
       "albumId": "72177720335359831",
-      "dataFile": "data/cave.json"
+      "dataFile": "data/cave.json",
+      "layout": "grid"
     },
     {
       "label": "Milford",
       "albumId": "72177720335388824",
-      "dataFile": "data/milford.json"
+      "dataFile": "data/milford.json",
+      "layout": "grid"
     },
     {
       "label": "Moon",
       "albumId": "72177720331263195",
-      "dataFile": "data/moon.json"
+      "dataFile": "data/moon.json",
+      "layout": "grid"
     },
     {
       "label": "Ropes",
       "albumId": "72177720335402159",
-      "dataFile": "data/ropes.json"
+      "dataFile": "data/ropes.json",
+      "layout": "grid"
+    },
+    {
+      "label": "Land",
+      "albumId": "72177720335379926",
+      "dataFile": "data/land.json",
+      "layout": "panorama"
     }
   ]
 }
