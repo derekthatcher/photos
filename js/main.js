@@ -3,11 +3,17 @@ let currentAlbumData = [];
 let lightboxState = 0; // 0: Closed, 1: Fit, 2: Caption
 let currentSortOrder = 'desc';
 let currentPhotoIndex = 0;
+let currentLayout = 'grid';
 
 const galleryEl = document.getElementById('gallery');
 const lightboxEl = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const overlayEl = document.getElementById('lightbox-overlay');
+
+// Helper to turn album labels into clean URL slugs
+function getSlug(label) {
+    return label.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
+}
 
 // 1. App Initialization
 async function init() {
@@ -15,7 +21,6 @@ async function init() {
         const res = await fetch('config.json?cachebust=' + Date.now());
         siteConfig = await res.json();
 
-        // 1. Apply Dynamic Colors
         if (siteConfig.bgColor) {
             document.documentElement.style.setProperty('--bg-color', siteConfig.bgColor);
         }
@@ -23,9 +28,9 @@ async function init() {
             document.documentElement.style.setProperty('--text-color', siteConfig.textColor);
         }
 
-        // 2. Set Site Title
         document.getElementById('site-title').innerText = siteConfig.siteTitle || 'Portfolio';
         document.title = siteConfig.siteTitle || 'Portfolio';
+
         if (siteConfig.about) {
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) metaDesc.setAttribute('content', siteConfig.about);
@@ -35,7 +40,6 @@ async function init() {
             if (faviconLink) faviconLink.setAttribute('href', siteConfig.favicon);
         }
 
-        // 3. Render Footer
         const aboutEl = document.getElementById('footer-about');
         const socialEl = document.getElementById('footer-social');
 
@@ -56,16 +60,27 @@ async function init() {
         }
 
         renderNavigation();
+
+        // Hash-based initial routing lookup
+        const currentHash = window.location.hash.replace('#', '');
+        let initialIndex = 0;
+
+        if (currentHash && siteConfig.navigation) {
+            const foundIndex = siteConfig.navigation.findIndex(
+                item => getSlug(item.label) === currentHash
+            );
+            if (foundIndex !== -1) initialIndex = foundIndex;
+        }
+
         if (siteConfig.navigation && siteConfig.navigation.length > 0) {
-            loadAlbum(siteConfig.navigation[0].dataFile, 0);
+            loadAlbum(siteConfig.navigation[initialIndex].dataFile, initialIndex, false);
         }
     } catch (err) {
         console.error('Failed to load config.json:', err);
     }
 }
 
-// 2. Dynamic Navigation Rendering
-// Toggle mobile menu open/close
+// 2. Navigation & Header Controls
 function toggleMobileMenu(e) {
     if (e) e.stopPropagation();
     const controls = document.getElementById('header-controls');
@@ -74,18 +89,20 @@ function toggleMobileMenu(e) {
     toggleBtn.innerText = isOpen ? '✕' : '☰';
 }
 
-// Update renderNavigation so selecting an album closes the dropdown
 function renderNavigation() {
     const navEl = document.getElementById('nav-menu');
     navEl.innerHTML = '';
+
+    if (!siteConfig.navigation) return;
+
     siteConfig.navigation.forEach((item, index) => {
         const link = document.createElement('a');
         link.innerText = item.label;
+        link.href = '#' + getSlug(item.label);
         link.onclick = (e) => {
             e.preventDefault();
-            loadAlbum(item.dataFile, index);
+            loadAlbum(item.dataFile, index, true);
 
-            // Close mobile menu when an album is clicked
             const controls = document.getElementById('header-controls');
             const toggleBtn = document.getElementById('menu-toggle');
             if (controls) controls.classList.remove('open');
@@ -96,29 +113,35 @@ function renderNavigation() {
     });
 }
 
-
-// 3. Album Fetching
-async function loadAlbum(dataFile, navIndex) {
+// 3. Album Fetching with History Control
+async function loadAlbum(dataFile, navIndex, updateHistory = true) {
     const gallery = document.getElementById('gallery');
-    const navLinks = document.querySelectorAll('nav a');
+    const currentAlbum = siteConfig.navigation[navIndex];
+    const slug = getSlug(currentAlbum.label);
+
+    currentLayout = currentAlbum && currentAlbum.layout ? currentAlbum.layout : 'grid';
+    gallery.className = `gallery-grid gallery-${currentLayout}`;
+
+    const navLinks = document.querySelectorAll('#nav-menu a');
     navLinks.forEach((link, idx) => link.classList.toggle('active', idx === navIndex));
 
+    if (updateHistory) {
+        history.pushState({ navIndex }, '', '#' + slug);
+    }
+
     galleryEl.innerHTML = '<div class="status-msg">Loading photos...</div>';
-    const currentAlbum = siteConfig.navigation[navIndex];
-    const layoutStyle = currentAlbum && currentAlbum.layout ? currentAlbum.layout : 'grid';
-    gallery.className = `gallery-grid gallery-${layoutStyle}`;
 
     try {
-        const res = await fetch(dataFile);
+        const res = await fetch(dataFile + '?cachebust=' + Date.now());
         currentAlbumData = await res.json();
-        sortAndRender(layoutStyle);
+        sortAndRender();
     } catch (err) {
         console.error(`Failed to load ${dataFile}:`, err);
         galleryEl.innerHTML = `<div class="status-msg">Unable to load album file: ${dataFile}</div>`;
     }
 }
 
-// Toggle sort direction
+// 4. Sorting & Gallery Rendering
 function setSortOrder(order) {
     currentSortOrder = order;
 
@@ -128,8 +151,7 @@ function setSortOrder(order) {
     sortAndRender();
 }
 
-// Sort array by Date Taken before calling renderGallery()
-function sortAndRender(layoutStyle) {
+function sortAndRender() {
     if (!currentAlbumData || currentAlbumData.length === 0) return;
 
     currentAlbumData.sort((a, b) => {
@@ -139,27 +161,22 @@ function sortAndRender(layoutStyle) {
         return currentSortOrder === 'desc' ? dateB - dateA : dateA - dateB;
     });
 
-    renderGallery(layoutStyle);
+    renderGallery(currentLayout);
 }
 
-// 4. Masonry / Justified Grid Rendering
 function renderGallery(layout = 'grid') {
     galleryEl.innerHTML = '';
 
-    // Check if device is desktop for panorama hi-res image loading
     const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
 
     currentAlbumData.forEach((photo, index) => {
-        // Create item container first
         const item = document.createElement('div');
         item.className = 'gallery-item';
 
-        // Choose image source based on layout and screen width
         const imgSrc = (layout === 'panorama' && isDesktop) 
             ? (photo.fullUrl || photo.displayUrl) 
             : (photo.displayUrl || photo.thumbUrl);
 
-        // Apply dynamic aspect ratio sizing for justified layout
         if (layout === 'justified') {
             const w = parseFloat(photo.width) || 800;
             const h = parseFloat(photo.height) || 600;
@@ -181,7 +198,7 @@ function renderGallery(layout = 'grid') {
     });
 }
 
-// 5. Lightbox Interactions (3-State Logic)
+// 5. Lightbox Logic
 function openLightbox(index) {
     currentPhotoIndex = index;
     lightboxState = 1;
@@ -189,20 +206,16 @@ function openLightbox(index) {
     updateLightboxContent();
 }
 
-// Update DOM elements for current photo (does not alter lightboxState or active classes)
 function updateLightboxContent() {
     const photo = currentAlbumData[currentPhotoIndex];
     if (!photo) return;
 
-    // Load fast-loading screen size
     lightboxImg.src = photo.displayUrl || photo.fullUrl || photo.thumbUrl;
     lightboxImg.alt = photo.title || '';
 
-    // Populate Overlay Text
     document.getElementById('meta-title').innerText = photo.title || '';
     document.getElementById('meta-desc').innerHTML = photo.description || '';
 
-    // Ensure links inside descriptions open in new tabs
     const descLinks = document.querySelectorAll('#meta-desc a');
     descLinks.forEach(link => {
         link.target = '_blank';
@@ -217,7 +230,6 @@ function updateLightboxContent() {
     if (zoomLink) zoomLink.href = photo.fullUrl || photo.displayUrl || photo.thumbUrl;
 }
 
-// Next/Previous navigation (preserves current lightboxState)
 function navigateLightbox(direction) {
     if (lightboxState === 0 || !currentAlbumData.length) return;
 
@@ -248,15 +260,8 @@ function closeLightbox(e) {
     lightboxImg.src = '';
 }
 
-// Keyboard Listeners (ESC, Arrow Left, Arrow Right)
 document.addEventListener('keydown', (e) => {
     if (lightboxState === 0) return;
-    const controls = document.getElementById('header-controls');
-    const toggleBtn = document.getElementById('menu-toggle');
-    if (controls && controls.classList.contains('open') && !e.target.closest('header')) {
-        controls.classList.remove('open');
-        if (toggleBtn) toggleBtn.innerText = '☰';
-    }
 
     if (e.key === 'Escape') {
         closeLightbox();
@@ -265,6 +270,18 @@ document.addEventListener('keydown', (e) => {
     } else if (e.key === 'ArrowLeft') {
         navigateLightbox('prev');
     }
+});
+
+// 6. Handle Browser Back & Forward Buttons for Hash Navigation
+window.addEventListener('hashchange', () => {
+    const currentHash = window.location.hash.replace('#', '');
+    if (!siteConfig || !siteConfig.navigation) return;
+
+    const index = siteConfig.navigation.findIndex(
+        item => getSlug(item.label) === currentHash
+    );
+    const targetIndex = index >= 0 ? index : 0;
+    loadAlbum(siteConfig.navigation[targetIndex].dataFile, targetIndex, false);
 });
 
 init();
