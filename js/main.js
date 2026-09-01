@@ -142,23 +142,39 @@ function sortAndRender(layoutStyle) {
     renderGallery(layoutStyle);
 }
 
-// 4. Masonry Grid Rendering
+// 4. Masonry / Justified Grid Rendering
 function renderGallery(layout = 'grid') {
     galleryEl.innerHTML = '';
+
+    // Check if device is desktop for panorama hi-res image loading
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+
     currentAlbumData.forEach((photo, index) => {
-        const imgSrc = (layout === 'panorama') 
+        // Create item container first
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+
+        // Choose image source based on layout and screen width
+        const imgSrc = (layout === 'panorama' && isDesktop) 
             ? (photo.fullUrl || photo.displayUrl) 
             : (photo.displayUrl || photo.thumbUrl);
 
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
+        // Apply dynamic aspect ratio sizing for justified layout
+        if (layout === 'justified') {
+            const w = parseFloat(photo.width) || 800;
+            const h = parseFloat(photo.height) || 600;
+            const aspectRatio = w / h;
+            
+            item.style.flexGrow = aspectRatio;
+            item.style.flexBasis = `${280 * aspectRatio}px`;
+        }
 
         const img = document.createElement('img');
         img.src = imgSrc;
         img.alt = photo.title || 'Photo';
         img.loading = 'lazy';
         img.onerror = () => item.remove();
-        img.onclick = () => openLightbox(index); // Pass index
+        img.onclick = () => openLightbox(index);
 
         item.appendChild(img);
         galleryEl.appendChild(item);

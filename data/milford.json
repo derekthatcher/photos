@@ -318,9 +318,9 @@
     "title": "IMG_9658",
     "description": "Shadowland, Sinbad Gully",
     "dateTaken": "2009-01-12 18:38:11",
-    "thumbUrl": "https://live.staticflickr.com/65535/3238627620_c7f747c8ec_b.jpg",
-    "displayUrl": "https://live.staticflickr.com/65535/3238627620_cfe85c9b75_k.jpg",
-    "fullUrl": "https://live.staticflickr.com/65535/3238627620_a1f7d85bb4_4k.jpg",
+    "thumbUrl": "https://live.staticflickr.com/65535/3238627620_0959a6475c_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/3238627620_aae9a46fc1_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/3238627620_879560b9c3_4k.jpg",
     "width": "auto",
     "height": "auto",
     "exif": {
@@ -328,8 +328,8 @@
       "lens": "EF70-200mm f/4L USM",
       "fStop": "f/4.0",
       "shutter": "0.003 sec (1/320)",
-      "iso": "N/A",
-      "focalLength": "N/A"
+      "iso": "ISO 400",
+      "focalLength": "200 mm"
     }
   },
   {
@@ -467,9 +467,9 @@
     "title": "IMG_9468",
     "description": "The Boys on the third pitch of Shadowland. Sinbad Gully",
     "dateTaken": "2009-01-12 09:32:38",
-    "thumbUrl": "https://live.staticflickr.com/65535/3232769296_e4cabceab2_b.jpg",
-    "displayUrl": "https://live.staticflickr.com/65535/3232769296_e58d4ec40e_k.jpg",
-    "fullUrl": "https://live.staticflickr.com/65535/3232769296_4cd2b9e209_3k.jpg",
+    "thumbUrl": "https://live.staticflickr.com/65535/3232769296_75bc6a90f3_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/3232769296_1f8990febd_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/3232769296_046c3e73e0_3k.jpg",
     "width": "auto",
     "height": "auto",
     "exif": {
@@ -477,8 +477,65 @@
       "lens": "EF70-200mm f/4L USM",
       "fStop": "f/8.0",
       "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 100",
+      "focalLength": "200 mm"
+    }
+  },
+  {
+    "id": "2459626919",
+    "title": "IMG_8936",
+    "description": "James Morris on Cryus the Great, Babylon\n\n",
+    "dateTaken": "2008-04-23 16:13:08",
+    "thumbUrl": "https://live.staticflickr.com/65535/2459626919_28f3314569_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/2459626919_8a3d24e457_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/2459626919_8a3d24e457_k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Canon EOS 400D Digital",
+      "lens": "N/A",
+      "fStop": "f/8.0",
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 100",
+      "focalLength": "17 mm"
+    }
+  },
+  {
+    "id": "1517866898",
+    "title": "bruce2",
+    "description": "Bruce working his project at Little Babylon",
+    "dateTaken": "2007-09-27 14:46:04",
+    "thumbUrl": "https://live.staticflickr.com/65535/1517866898_8b82a0b8d6_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/1517866898_124b4ad937_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/1517866898_124b4ad937_k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Canon EOS 400D Digital",
+      "lens": "EF-S17-85mm f/4-5.6 IS USM",
+      "fStop": "f/5.0",
+      "shutter": "0.001 sec (1/1000)",
       "iso": "N/A",
       "focalLength": "N/A"
+    }
+  },
+  {
+    "id": "3042980988",
+    "title": "P1060760",
+    "description": "JC trying out the moves on Rage 30, Babylon. Since I do not have any new shots I thought I should upload some old classics from the pre flickr days.",
+    "dateTaken": "2005-12-31 14:50:07",
+    "thumbUrl": "https://live.staticflickr.com/65535/3042980988_bf9228fa85_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/3042980988_c21f3eb651_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/3042980988_c21f3eb651_k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Panasonic DMC-FZ20",
+      "lens": "N/A",
+      "fStop": "f/2.8",
+      "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 100",
+      "focalLength": "6 mm"
     }
   }
 ]

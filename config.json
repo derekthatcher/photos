@@ -27,7 +27,7 @@
       "label": "Basin",
       "albumId": "72177720335360086",
       "dataFile": "data/basin.json",
-      "layout": "grid"
+      "layout": "justified"
     },
     {
       "label": "Cave",

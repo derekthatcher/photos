@@ -120,9 +120,10 @@ nav a.active {
 
 /* Masonry Gallery Grid */
 .gallery-grid {
-            column-count: 3;
-            column-gap: 20px;
-        }
+    column-count: 3;
+    column-gap: 20px;
+}
+
 .gallery-item {
     break-inside: avoid;
     margin-bottom: 20px;
@@ -162,6 +163,33 @@ nav a.active {
     object-fit: contain;
 }
 
+/* Justified Grid (Flickr Style) */
+.gallery-grid.gallery-justified {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.gallery-grid.gallery-justified .gallery-item {
+    height: 280px;
+    /* Base row height */
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.gallery-grid.gallery-justified img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Prevents last row items from stretching ridiculously wide */
+.gallery-grid.gallery-justified::after {
+    content: '';
+    flex-grow: 999999999;
+}
+
 @media (max-width: 1024px) {
     .gallery-grid {
         column-count: 2;
@@ -172,6 +200,7 @@ nav a.active {
     main {
         padding: 16px 16px 34px;
     }
+
     .gallery-grid {
         column-count: 1;
         padding: 0;

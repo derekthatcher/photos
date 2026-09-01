@@ -321,6 +321,7 @@
         <input type="text" class="album-id" placeholder="Flickr Album ID" value="${albumId}">
         <select class="album-layout">
             <option value="grid" ${layout === 'grid' ? 'selected' : ''}>Standard Grid</option>
+            <option value="justified" ${layout === 'justified' ? 'selected' : ''}>Justified Grid</option>
             <option value="panorama" ${layout === 'panorama' ? 'selected' : ''}>Panorama (Full Width)</option>
         </select>
         <button type="button" class="secondary" style="font-size:0.8rem; padding: 6px 12px;" onclick="syncSingleRow(this.parentElement)">Sync</button>
