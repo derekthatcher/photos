@@ -6,7 +6,7 @@ A minimal, ultra-lightweight photography portfolio built with pure HTML5, CSS, a
 
 * **Zero Build Steps:** Runs natively in any web browser without Node.js, npm, or compilers.
 * **Privacy & Speed:** No Flickr API key required for site visitors. Images load directly from Flickr's global static CDN.
-* **Masonry Grid Layout:** Native CSS multi-column grid that cleanly accommodates portrait, landscape, and panorama images.
+* **Grid Layout options:** Each Gallery can have invididual layout options 
 * **3-State Lightbox UX:**
   1. **Click 1:** Expands photo to full screen.
   2. **Click 2:** Fades in a semi-transparent EXIF & caption overlay.
