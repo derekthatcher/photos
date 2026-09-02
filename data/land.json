@@ -112,5 +112,43 @@
       "iso": "ISO 640",
       "focalLength": "500 mm"
     }
+  },
+  {
+    "id": "54560638477",
+    "title": "_DSC8800",
+    "description": "Kura Tawhiti - 12 frame composite.\n\n<a href=\"https://derekthatcher.github.io/basiner/?img=quantum-field\" rel=\"noreferrer nofollow\">derekthatcher.github.io/basiner/?img=quantum-field</a>",
+    "dateTaken": "2025-06-01 16:57:51",
+    "thumbUrl": "https://live.staticflickr.com/65535/54560638477_cedc4b6ab3_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/54560638477_b15f8135de_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/54560638477_9a2b625175_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Sony ILCE-7M3",
+      "lens": "E 150-500mm F5-6.7 A057",
+      "fStop": "f/6.3",
+      "shutter": "0.002 sec (1/500)",
+      "iso": "ISO 640",
+      "focalLength": "265 mm"
+    }
+  },
+  {
+    "id": "55056460960",
+    "title": "Teapot 6",
+    "description": "24 frames at 500mm.\n<a href=\"https://derekthatcher.github.io/basiner/?img=the-teapot-6\" rel=\"noreferrer nofollow\">derekthatcher.github.io/basiner/?img=the-teapot-6</a>",
+    "dateTaken": "2026-01-23 12:38:35",
+    "thumbUrl": "https://live.staticflickr.com/65535/55056460960_d61b9fd41f_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55056460960_7480b71be7_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/55056460960_3d18e975cc_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Sony ILCE-7M3",
+      "lens": "E 150-500mm F5-6.7 A057",
+      "fStop": "f/10.0",
+      "shutter": "0.003 sec (1/320)",
+      "iso": "ISO 100",
+      "focalLength": "500 mm"
+    }
   }
 ]
