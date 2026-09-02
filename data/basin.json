@@ -536,14 +536,14 @@
     "title": "IMG_3219",
     "description": "James and the Dark Arete, Teapot",
     "dateTaken": "2011-01-22 16:08:58",
-    "thumbUrl": "https://live.staticflickr.com/5126/5378897550_23769530a4_b.jpg",
-    "displayUrl": "https://live.staticflickr.com/5126/5378897550_4b71c227b2_k.jpg",
-    "fullUrl": "https://live.staticflickr.com/5126/5378897550_41004ce973_4k.jpg",
+    "thumbUrl": "https://live.staticflickr.com/65535/5378897550_2651e6a1e5_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/5378897550_7861ebfdfa_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/5378897550_c6c8596f27_4k.jpg",
     "width": "auto",
     "height": "auto",
     "exif": {
       "camera": "Canon EOS 500D",
-      "lens": "17-50mm",
+      "lens": "TAMRON SP 17-50mm F/2.8 DiII VC B005E",
       "fStop": "f/5.6",
       "shutter": "0.005 sec (1/200)",
       "iso": "ISO 100",
@@ -776,6 +776,25 @@
       "shutter": "0.001 sec (1/1600)",
       "iso": "ISO 100",
       "focalLength": "70 mm"
+    }
+  },
+  {
+    "id": "2684278571",
+    "title": "IMG_2423",
+    "description": "Gomez gets the send of the day. The Mir Space Station, at Teapot\nPROJECT: sit start down to the right.\nBETA: hard pull on and slap to edge, little feet. big span left to pod that Mir starts on.",
+    "dateTaken": "2008-07-20 15:20:52",
+    "thumbUrl": "https://live.staticflickr.com/65535/2684278571_74ee8be04d_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/2684278571_6eddfc3e26_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/2684278571_4c8e1bae27_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Canon EOS 400D Digital",
+      "lens": "EF-S17-85mm f/4-5.6 IS USM",
+      "fStop": "f/4.0",
+      "shutter": "0.008 sec (1/125)",
+      "iso": "ISO 100",
+      "focalLength": "20 mm"
     }
   }
 ]

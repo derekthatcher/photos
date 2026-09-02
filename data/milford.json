@@ -505,9 +505,9 @@
     "title": "bruce2",
     "description": "Bruce working his project at Little Babylon",
     "dateTaken": "2007-09-27 14:46:04",
-    "thumbUrl": "https://live.staticflickr.com/65535/1517866898_8b82a0b8d6_b.jpg",
-    "displayUrl": "https://live.staticflickr.com/65535/1517866898_124b4ad937_k.jpg",
-    "fullUrl": "https://live.staticflickr.com/65535/1517866898_124b4ad937_k.jpg",
+    "thumbUrl": "https://live.staticflickr.com/65535/1517866898_6b1bfa1a59_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/1517866898_0d75369eb9_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/1517866898_0d75369eb9_k.jpg",
     "width": "auto",
     "height": "auto",
     "exif": {
@@ -515,8 +515,8 @@
       "lens": "EF-S17-85mm f/4-5.6 IS USM",
       "fStop": "f/5.0",
       "shutter": "0.001 sec (1/1000)",
-      "iso": "N/A",
-      "focalLength": "N/A"
+      "iso": "ISO 100",
+      "focalLength": "17 mm"
     }
   },
   {
@@ -534,6 +534,25 @@
       "lens": "N/A",
       "fStop": "f/2.8",
       "shutter": "0.005 sec (1/200)",
+      "iso": "ISO 100",
+      "focalLength": "6 mm"
+    }
+  },
+  {
+    "id": "3042137277",
+    "title": "P1060824",
+    "description": "JC trying out the moves on Rage 30, Babylon",
+    "dateTaken": "2005-12-31 15:27:59",
+    "thumbUrl": "https://live.staticflickr.com/65535/3042137277_084c24d6bd_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/3042137277_a5bb93b721_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/3042137277_3c7d36bd23_3k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Panasonic DMC-FZ20",
+      "lens": "N/A",
+      "fStop": "f/2.8",
+      "shutter": "0.004 sec (1/250)",
       "iso": "ISO 100",
       "focalLength": "6 mm"
     }
