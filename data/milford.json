@@ -93,6 +93,9 @@
     "title": "IMG_4932.jpg",
     "description": "JC on a project on the Mates Little Brother",
     "dateTaken": "2007-12-28 15:33:23",
+    "thumbUrl": "https://live.staticflickr.com/65535/2146938457_5b08091ae9_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/2146938457_ce4945aec3_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/2146938457_1d3e021916_4k.jpg",
     "width": "auto",
     "height": "auto",
     "exif": {
@@ -333,22 +336,6 @@
     }
   },
   {
-    "id": "2230349548",
-    "title": "IMG_6658.jpg",
-    "description": "Thømas on his monsterous project at Little Babylon\n",
-    "dateTaken": "2008-01-28 15:23:15",
-    "width": "auto",
-    "height": "auto",
-    "exif": {
-      "camera": "Canon EOS 400D Digital",
-      "lens": "EF-S17-85mm f/4-5.6 IS USM",
-      "fStop": "f/4.0",
-      "shutter": "0.013 sec (1/80)",
-      "iso": "ISO 400",
-      "focalLength": "17 mm"
-    }
-  },
-  {
     "id": "2230348218",
     "title": "IMG_6472.jpg",
     "description": "Gary Philips trying out Hellboy 28 at Little Babylon",
@@ -555,6 +542,101 @@
       "shutter": "0.004 sec (1/250)",
       "iso": "ISO 100",
       "focalLength": "6 mm"
+    }
+  },
+  {
+    "id": "969734073",
+    "title": "msgrequiem",
+    "description": "Mayan climbing Requiem 30, Babylon",
+    "dateTaken": "2007-07-31 22:09:44",
+    "thumbUrl": "https://live.staticflickr.com/65535/969734073_c33fb637aa_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/969734073_14f34c6a51_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/969734073_0228660452_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "N/A",
+      "lens": "N/A",
+      "fStop": "N/A",
+      "shutter": "N/A",
+      "iso": "N/A",
+      "focalLength": "N/A"
+    }
+  },
+  {
+    "id": "3233007953",
+    "title": "228_8510",
+    "description": "James Morris sticking the patented Drive-By move on Xerxes.",
+    "dateTaken": "2008-12-27 15:50:10",
+    "thumbUrl": "https://live.staticflickr.com/65535/3233007953_79c5683861_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/3233007953_83099564be_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/3233007953_3083ff0e37_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Canon EOS 400D Digital",
+      "lens": "EF70-200mm f/4L USM",
+      "fStop": "f/4.0",
+      "shutter": "0.005 sec (1/200)",
+      "iso": "N/A",
+      "focalLength": "N/A"
+    }
+  },
+  {
+    "id": "2146938177",
+    "title": "IMG_4895.jpg",
+    "description": "JC on a project on the Mates Little Brother",
+    "dateTaken": "2007-12-28 15:09:53",
+    "thumbUrl": "https://live.staticflickr.com/65535/2146938177_e6e9cced92_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/2146938177_d636dddfae_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/2146938177_b4c971a5e6_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Canon EOS 400D Digital",
+      "lens": "EF70-200mm f/4L USM",
+      "fStop": "f/4.0",
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 100",
+      "focalLength": "200 mm"
+    }
+  },
+  {
+    "id": "2146937917",
+    "title": "100_5083.jpg",
+    "description": "Seb on project, The Palace of Xerxes",
+    "dateTaken": "2007-12-29 14:01:03",
+    "thumbUrl": "https://live.staticflickr.com/65535/2146937917_f154fbe5bb_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/2146937917_4a4875653f_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/2146937917_0f37c62e55_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Canon EOS 400D Digital",
+      "lens": "EF-S17-85mm f/4-5.6 IS USM",
+      "fStop": "f/5.0",
+      "shutter": "0.017 sec (1/60)",
+      "iso": "ISO 100",
+      "focalLength": "35 mm"
+    }
+  },
+  {
+    "id": "55505606585",
+    "title": "IMG_4947",
+    "description": "Old picture from 2007 of JC on Revelations, The Mates Little Brother.",
+    "dateTaken": "2007-12-28 15:35:35",
+    "thumbUrl": "https://live.staticflickr.com/65535/55505606585_ffcf234895_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55505606585_233823f013_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/55505606585_07a27d233f_4k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Canon EOS 400D Digital",
+      "lens": "EF70-200mm f/4L USM",
+      "fStop": "f/4.0",
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 100",
+      "focalLength": "70 mm"
     }
   }
 ]
