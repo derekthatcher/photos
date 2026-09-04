@@ -1,8 +1,8 @@
 {
   "siteTitle": "Derek Thatcher",
   "favicon": "favicon.ico",
-  "bgColor": "#0f0f0f",
-  "textColor": "#ededed",
+  "bgColor": "#121212",
+  "textColor": "#f2f2f2",
   "about": "Photographs of people climbing rocks (mostly).",
   "socialLinks": [
     {
@@ -33,7 +33,7 @@
       "label": "Cave",
       "albumId": "72177720335359831",
       "dataFile": "data/cave.json",
-      "layout": "grid"
+      "layout": "justified"
     },
     {
       "label": "Milford",
