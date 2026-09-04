@@ -190,6 +190,43 @@ nav a.active {
     flex-grow: 999999999;
 }
 
+/* Zoom Button Styling */
+.meta-zoom {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 0.85rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.meta-zoom:hover {
+    opacity: 1;
+}
+
+/* State 3: Full-Res Zoom Mode */
+#lightbox.state-zoom {
+    overflow: auto;
+    display: flex;
+    cursor: zoom-out;
+}
+
+#lightbox.state-zoom img {
+    max-width: none;
+    max-height: none;
+    width: auto;
+    height: auto;
+    margin: auto; /* Centers if smaller than viewport; enables full scrolling if larger */
+}
+
+/* Hide caption overlay while zoomed in */
+#lightbox.state-zoom #lightbox-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
 @media (max-width: 1024px) {
     .gallery-grid {
         column-count: 2;

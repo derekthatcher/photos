@@ -467,7 +467,7 @@
                         });
                     }
                 } catch (e) { }
-
+                console.log(p);
                 result.push({
                     id: p.id,
                     title: p.title || 'Untitled',
@@ -475,7 +475,7 @@
                     dateTaken: p.datetaken || '',
                     thumbUrl: p.url_l || p.url_o,
                     displayUrl: p.url_k || p.url_h || p.url_l || p.url_o,
-                    fullUrl: p.url_o || p.url_4k || p.url_3k || p.url_k || p.url_h || p.url_l,
+                    fullUrl: p.url_k || p.url_o || p.url_4k || p.url_3k || p.url_h || p.url_l,
                     width: p.o_width || p.width_o || 'auto',
                     height: p.o_height || p.height_o || 'auto',
                     exif: exifData

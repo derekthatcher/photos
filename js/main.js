@@ -225,9 +225,61 @@ function updateLightboxContent() {
     const exif = photo.exif || {};
     const exifParts = [exif.camera, exif.lens, exif.focalLength, exif.fStop, exif.shutter, exif.iso].filter(val => val && val !== 'N/A');
     document.getElementById('meta-exif').innerText = exifParts.join('  |  ');
+}
 
-    const zoomLink = document.getElementById('meta-zoom');
-    if (zoomLink) zoomLink.href = photo.fullUrl || photo.displayUrl || photo.thumbUrl;
+// Updated Lightbox State Tracking
+// 0: Closed, 1: Fit View, 2: Caption View, 3: Full Zoom
+
+function toggleZoom(e) {
+    if (e) e.stopPropagation();
+
+    const photo = currentAlbumData[currentPhotoIndex];
+    if (!photo) return;
+
+    if (lightboxState !== 3) {
+        // Switch to State 3 (Full Zoom)
+        lightboxState = 3;
+        lightboxEl.className = 'active state-zoom';
+        
+        const targetUrl = photo.fullUrl || photo.displayUrl || photo.thumbUrl;
+
+        // Fallback gracefully if 429 (or any load error) occurs on 4K files
+        lightboxImg.onerror = () => {
+            console.warn('High-res image rate limited or failed to load. Falling back to display size.');
+            lightboxImg.onerror = null; // Prevent infinite loop
+            lightboxImg.src = photo.displayUrl || photo.thumbUrl;
+        };
+
+        lightboxImg.src = targetUrl;
+    } else {
+        // Return to State 2 (Caption View)
+        lightboxState = 2;
+        lightboxEl.className = 'active state-caption';
+        lightboxImg.onerror = null;
+        lightboxImg.src = photo.displayUrl || photo.fullUrl || photo.thumbUrl;
+    }
+}
+
+function closeLightbox(e) {
+    if (e) e.stopPropagation();
+    lightboxState = 0;
+    lightboxEl.className = '';
+    lightboxImg.onerror = null;
+    lightboxImg.src = '';
+}
+
+function cycleLightboxState(e) {
+    if (e.target.closest('.lightbox-close') || e.target.closest('#meta-desc a')) return;
+
+    if (lightboxState === 1) {
+        lightboxState = 2;
+        lightboxEl.className = 'active state-caption';
+    } else if (lightboxState === 2) {
+        closeLightbox();
+    } else if (lightboxState === 3) {
+        // Clicking anywhere in Zoom Mode returns to State 2 (Caption View)
+        toggleZoom(e);
+    }
 }
 
 function navigateLightbox(direction) {
@@ -239,25 +291,13 @@ function navigateLightbox(direction) {
         currentPhotoIndex = (currentPhotoIndex - 1 + currentAlbumData.length) % currentAlbumData.length;
     }
 
-    updateLightboxContent();
-}
-
-function cycleLightboxState(e) {
-    if (e.target.closest('.lightbox-close') || e.target.closest('#meta-zoom') || e.target.closest('#meta-desc a')) return;
-
-    if (lightboxState === 1) {
+    // Reset zoom state to caption state on photo change
+    if (lightboxState === 3) {
         lightboxState = 2;
         lightboxEl.className = 'active state-caption';
-    } else if (lightboxState === 2) {
-        closeLightbox();
     }
-}
 
-function closeLightbox(e) {
-    if (e) e.stopPropagation();
-    lightboxState = 0;
-    lightboxEl.className = '';
-    lightboxImg.src = '';
+    updateLightboxContent();
 }
 
 document.addEventListener('keydown', (e) => {

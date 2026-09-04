@@ -18,6 +18,7 @@
         rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div class="site-title" id="site-title">Portfolio</div>
@@ -48,8 +49,8 @@
             <div id="meta-desc" class="meta-desc"></div>
             <div class="meta-footer">
                 <div id="meta-exif" class="meta-exif"></div>
-                <a id="meta-zoom" class="meta-zoom" href="#" target="_blank" rel="noopener noreferrer"
-                    title="Open Original High-Res Image" onclick="event.stopPropagation()">🔍</a>
+                <button id="meta-zoom" class="meta-zoom" type="button" title="Zoom High-Res Image"
+                    onclick="toggleZoom(event)">🔍</button>
             </div>
         </div>
     </div>
@@ -59,7 +60,7 @@
         <div id="footer-social" class="footer-social"></div>
     </footer>
 
-<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
