@@ -1,3 +1,4 @@
+// Variables and Constants
 let siteConfig = null;
 let currentAlbumData = [];
 let lightboxState = 0; // 0: Closed, 1: Fit, 2: Caption
@@ -8,14 +9,13 @@ let currentLayout = 'grid';
 const galleryEl = document.getElementById('gallery');
 const lightboxEl = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
-const overlayEl = document.getElementById('lightbox-overlay');
 
 // Helper to turn album labels into clean URL slugs
 function getSlug(label) {
     return label.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
 }
 
-// 1. App Initialization
+// 1. Initialization - load jsons, no caching.
 async function init() {
     try {
         const res = await fetch('config.json?cachebust=' + Date.now());
@@ -118,11 +118,10 @@ async function loadAlbum(dataFile, navIndex, updateHistory = true) {
     const gallery = document.getElementById('gallery');
     const currentAlbum = siteConfig.navigation[navIndex];
     const slug = getSlug(currentAlbum.label);
+    const navLinks = document.querySelectorAll('#nav-menu a');
 
     currentLayout = currentAlbum && currentAlbum.layout ? currentAlbum.layout : 'grid';
     gallery.className = `gallery-grid gallery-${currentLayout}`;
-
-    const navLinks = document.querySelectorAll('#nav-menu a');
     navLinks.forEach((link, idx) => link.classList.toggle('active', idx === navIndex));
 
     if (updateHistory) {
@@ -198,7 +197,7 @@ function renderGallery(layout = 'grid') {
     });
 }
 
-// 5. Lightbox Logic
+// 5. Lightbox toggle states
 function openLightbox(index) {
     currentPhotoIndex = index;
     lightboxState = 1;
