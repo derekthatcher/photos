@@ -720,5 +720,24 @@
       "iso": "ISO 640",
       "focalLength": "28 mm"
     }
+  },
+  {
+    "id": "55538001551",
+    "title": "_DSC5181",
+    "description": "Nic Klever on Space Time, the Cave",
+    "dateTaken": "2026-09-19 15:23:24",
+    "thumbUrl": "https://live.staticflickr.com/65535/55538001551_0acb5cc65a_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55538001551_fb11ca1ccb_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/55538001551_fb11ca1ccb_k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Sony ILCE-7M3",
+      "lens": "70-200mm F4 G SSM",
+      "fStop": "f/4.0",
+      "shutter": "0.003 sec (1/400)",
+      "iso": "ISO 1600",
+      "focalLength": "94 mm"
+    }
   }
 ]
