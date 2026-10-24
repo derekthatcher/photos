@@ -739,5 +739,24 @@
       "iso": "ISO 1600",
       "focalLength": "94 mm"
     }
+  },
+  {
+    "id": "55609647343",
+    "title": "_DSC5308",
+    "description": "Erin, Bolt Chaser, the Cave",
+    "dateTaken": "2026-10-24 16:11:35",
+    "thumbUrl": "https://live.staticflickr.com/65535/55609647343_74c632d955_b.jpg",
+    "displayUrl": "https://live.staticflickr.com/65535/55609647343_d7be9fc3e3_k.jpg",
+    "fullUrl": "https://live.staticflickr.com/65535/55609647343_d7be9fc3e3_k.jpg",
+    "width": "auto",
+    "height": "auto",
+    "exif": {
+      "camera": "Sony ILCE-7M3",
+      "lens": "70-200mm F4 G SSM",
+      "fStop": "f/4.0",
+      "shutter": "0.004 sec (1/250)",
+      "iso": "ISO 1000",
+      "focalLength": "94 mm"
+    }
   }
 ]
